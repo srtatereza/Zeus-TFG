@@ -1,0 +1,79 @@
+:root {
+    --primario: #041e3a;
+    --secundario: #4b5e96; 
+    --blanco: #FFF;
+    --negro: #000;
+
+    --fuentePrincipal: 'Staatliches', cursive;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/** Globales **/
+body {
+    background-color: var(--blanco);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+p {
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--negro);
+    font-family: var(--fuentePrincipal);
+}
+
+a {
+    text-decoration: none;
+    font-size: 3rem;
+    font-family: var(--fuentePrincipal);
+}
+
+img {
+    width: auto;
+}
+
+.contenedor-central {
+    max-width: 120rem;
+    margin: 0 auto;
+    height: auto;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: var(--negro);
+    font-family: var(--fuentePrincipal);
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.7rem;
+}
+
+h3 {
+    font-size: 2.4rem;
+}
+
+.publicidad {
+    width: 100%;
+    max-height: 50px;
+    background-color: var(--primario); /* Color de fondo */
+    text-align: center;
+    overflow: hidden;
+  }
+.publicidad p {
+    margin: 0;
+    padding: 10px;
+    font-size: 14px; /* Tamaño del texto */
+    color: var(--blanco); /* Color del texto */
+  }
