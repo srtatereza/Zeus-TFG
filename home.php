@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'include/camisetasDB.php';
+include_once 'include/zeus_tfg.php';
 include_once 'classes/producto.php';
 include_once 'classes/cliente.php';
 
