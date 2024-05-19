@@ -20,127 +20,129 @@ include_once 'include/zeus_tfg.php';
 </head>
 <body>
 
-<!-- Menu -->
-<div class="menu">
-    <ul class="menu-content">
-        <li><a href="home.php">Home</a></li>
-        <li><a href="carrito.php">Carrito</a></li>
-        <li><a href="pedidos.php">Pedidos</a></li>
-    </ul>
-</div>
+<?php
 
-<div class="contenedor">
-    <!-- Carrito -->
-    <div class="carrito-producto">
-        <h2>Carrito de Compras</h2>
-        <?php
-        // Verifica si se ha enviado el formulario
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Agregar un producto al carrito
-            if (isset($_POST['agregar_al_carrito'])) {
-                $id_producto = trim($_POST['id_producto']);
-                $nombre = trim($_POST['nombre']);
-                $precio = trim($_POST['precio']);
-                $cantidad = (int)trim($_POST['cantidad']);
+// Establecer el nivel de reporte de errores
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-                // Verifica que la cantidad sea válida (entre 1 y 10)
-                if ($cantidad > 0 && $cantidad <= 10) {
-                    // Verifica si el carrito ya existe en la sesión
-                    if (!isset($_SESSION['carrito'])) {
-                        $_SESSION['carrito'] = array();
-                    }
+// Agregar un producto al carrito
+if (isset($_POST['agregar_al_carrito'])) {
+    if (isset($_POST['id_producto'], $_POST['nombre'], $_POST['precio'], $_POST['cantidad'], $_POST['talla'], $_POST['color'])) {
+        $id_producto = trim($_POST['id_producto']);
+        $nombre = trim($_POST['nombre']);
+        $precio = trim($_POST['precio']);
+        $cantidad = (int) trim($_POST['cantidad']);
+        $numero_talla = trim($_POST['talla']);
+        $nombre_color = trim($_POST['color']);
 
-                    // Agrega el producto al carrito en la sesión
-                    $_SESSION['carrito'][$id_producto] = array(
-                        'nombre' => $_POST['nombre'],
-                        'precio' => $_POST['precio'],
-                        'cantidad' => $cantidad
-                    );
-                    echo '<p>Producto agregado al carrito.</p>';
-                } else {
-                    echo '<p>La cantidad seleccionada no es válida.</p>';
-                }
+        // Aquí debes buscar en la base de datos el id_color y el id_talla correspondientes al nombre_color y numero_talla
+        // y almacenarlos junto con otros detalles del producto en el carrito
 
-                // Realiza el pedido al hacer clic en "Comprar"
-            } elseif (isset($_POST['comprar'])) {
-                // Obtener la fecha actual
-                $fechaCompra = date('Y-m-d H:i:s');
-                // Insertar el pedido utilizando la clase "Pedido"
-                foreach ($_SESSION['carrito'] as $id_producto => $producto) {
-                    $cantidad_producto = $producto['cantidad'];
-                    $id_cliente = $_SESSION['id_cliente'];
-                    $pedido = new Pedido("", $fechaCompra, $id_cliente, $id_producto, $cantidad_producto);
-                    $pedido->insert();
-                }
+        
+        // Luego, cuando tengas los IDs, puedes almacenarlos en el carrito así:
+        $_SESSION['carrito'][$id_producto] = array(
+            'nombre' => $nombre,
+            'precio' => $precio,
+            'cantidad' => $cantidad,
+            'numero_talla' => $numero_talla,
+            'nombre_color' => $nombre_color,
+            'id_color' => $id_color, // Agregar el ID del color al carrito
+            'id_talla' => $id_talla // Agregar el ID de la talla al carrito
+        );
 
-                // Limpiar el carrito después de realizar la compra
-                $_SESSION['carrito'] = [];
-                echo '<p>Compra realizada con éxito.</p>';
-                echo '<a href="pedidos.php">Ver la factura de mi pedido</a>';
-                echo '<br>';
+        echo '<p>Producto agregado al carrito.</p>';
+    }
+}
 
-                // Procesar la eliminación de un producto
-            } elseif (isset($_POST['eliminar_producto'])) {
-                $id_productoEliminar = $_POST['eliminar_producto'];
-                unset($_SESSION['carrito'][$id_productoEliminar]);
-                echo '<p>Producto eliminado del carrito.</p>';
+// Eliminar un producto del carrito
+if (isset($_POST['eliminar_producto'])) {
+    $id_productoEliminar = $_POST['eliminar_producto'];
+    unset($_SESSION['carrito'][$id_productoEliminar]);
+    echo '<p>Producto eliminado del carrito.</p>';
+}
 
-                // Vaciado del carrito
-            } elseif (isset($_POST['vaciar'])) {
-                unset($_SESSION['carrito']);
-                echo '<p>El carrito ha sido vaciado.</p>';
-            }
+// Vaciar el carrito
+if (isset($_POST['vaciar'])) {
+    unset($_SESSION['carrito']);
+    echo '<p>El carrito ha sido vaciado.</p>';
+}
+
+// Al realizar la compra
+if (isset($_POST['comprar'])) {
+    $fechaCompra = date('Y-m-d H:i:s');
+
+    if (isset($_SESSION['carrito']) && isset($_SESSION['id_cliente'])) {
+        $id_cliente = $_SESSION['id_cliente'];
+
+        foreach ($_SESSION['carrito'] as $producto) {
+            $id_producto = $producto['id_producto'];
+            $cantidad_producto = $producto['cantidad'];
+            $id_color = $producto['id_color']; // Obtén el ID del color del carrito
+            $id_talla = $producto['id_talla']; // Obtén el ID de la talla del carrito
+
+            // Aquí debes insertar el pedido en la tabla pedidos usando los IDs del color y la talla obtenidos del carrito
+
+            // Crear y ejecutar la inserción del pedido
+            $pedido = new Pedido(null, $fechaCompra, $id_cliente, $id_producto, $cantidad_producto, $id_color, $id_talla);
+            $pedido->insert();
         }
 
-        // Muestra productos en el carrito y calcula el total
-        if (!empty($_SESSION['carrito'])) {
-            $total = 0;
-            foreach ($_SESSION['carrito'] as $id_producto => $producto) {
-                echo '<p class="titulo_c">Nombre:' . $producto['nombre'] . '</p>';
-                echo '<p class="titulo_c">Precio: ' . $producto['precio'] . '$.c/u</p>';
+        // Vaciar el carrito después de la compra
+        $_SESSION['carrito'] = [];
 
-                // Calcular el total de la compra
-                $precio_total_producto = $producto['precio'] * $producto['cantidad'];
-                $total += $precio_total_producto;
+        echo '<p>Compra realizada con éxito.</p>';
+        echo '<a href="pedidos.php">Ver la factura de mi pedido</a>';
+        echo '<br>';
+    } else {
+        echo '<p>Error: El carrito está vacío o no se ha identificado al cliente.</p>';
+    }
+}
 
-                // Muestra la cantidad del producto y el precio total
-                echo '<p class="titulo_c">' . 'Cantidad: ' . $producto['cantidad'] . ' = Precio: $' . $precio_total_producto . '</p>';
-                echo '<br>';
-
-                // Agrega un enlace para eliminar productos del carrito
-                echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
-                echo '<input type="hidden" name="eliminar_producto" value="' . $id_producto . '">';
-                echo '<input type="submit" name="eliminar" value="Eliminar" class="formulario_submit_eliminar">';
-                echo '</form>';
-                echo '<br>';
-            }
-
-            // Muestra el total de la compra
-            echo '<p class="titulo_c">Precio Total: $' . $total . '</p>';
-            echo '<br>';
-
-            // Formulario para comprar los productos
-            echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
-            echo '<input type="submit" name="comprar" value="comprar" class="formulario_submit">';
-            echo '</form>';
-
-            echo '<br>';
-
-            // Formulario para vaciar el carrito
-            echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
-            echo '<input type="submit" name="vaciar" value="vaciar" class="formulario_submit">';
-            echo '</form>';
-        } else {
-            echo '<p>No hay productos en el carrito.</p>';
-        }
-
+// Mostrar el contenido del carrito
+if (!empty($_SESSION['carrito'])) {
+    $total = 0;
+    foreach ($_SESSION['carrito'] as $id_producto => $producto) {
+        echo '<p class="titulo_c">Nombre: ' . $producto['nombre'] . '</p>';
+        echo '<p class="titulo_c">Talla: ' . $producto['numero_talla'] . '</p>';
+        echo '<p class="titulo_c">Color: ' . $producto['nombre_color'] . '</p>';
+        echo '<p class="titulo_c">Precio: $' . $producto['precio'] . ' c/u</p>';
+        $precio_total_producto = $producto['precio'] * $producto['cantidad'];
+        $total += $precio_total_producto;
+        echo '<p class="titulo_c">Cantidad: ' . $producto['cantidad'] . ' = Precio: $' . $precio_total_producto . '</p>';
         echo '<br>';
 
-        // Enlace para volver a home
-        echo '<a href="home.php">Seguir Comprando</a>';
-        ?>
-    </div>
+        echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+        echo '<input type="hidden" name="eliminar_producto" value="' . $id_producto . '">';
+        echo '<input type="submit" name="eliminar" value="Eliminar" class="formulario_submit_eliminar">';
+        echo '</form>';
 
-</div>
+        echo '<br>';
+    }
+
+    // Mostrar el total de la compra
+    echo '<p class="titulo_c">Precio Total: $' . $total . '</p>';
+    echo '<br>';
+
+    // Formulario para comprar los productos
+    echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+    echo '<input type="submit" name="comprar" value="Comprar" class="formulario_submit">';
+    echo '</form>';
+
+    echo '<br>';
+
+    // Formulario para vaciar el carrito
+    echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+    echo '<input type="submit" name="vaciar" value="Vaciar" class="formulario_submit">';
+    echo '</form>';
+} else {
+    echo '<p>No hay productos en el carrito.</p>';
+}
+
+// Enlace para volver a home
+echo '<a href="home.php">Seguir Comprando</a>';
+echo '<br>';
+?>
+
 </body>
-</html>

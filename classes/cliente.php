@@ -62,7 +62,7 @@ class Cliente
     public function insert()
     {
         $conexion = camisetasDB::connectDB();
-        $sql = "INSERT INTO camisetas.clientes (nombre, apellido, direccion, telefono, email, contrasenia) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO zeus_tfg.clientes (nombre, apellido, direccion, telefono, email, contrasenia) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             $stmt = $conexion->prepare($sql);
             $stmt->execute([$this->nombre, $this->apellido, $this->direccion, $this->telefono, $this->email, $this->contrasenia]);

@@ -24,7 +24,7 @@ body {
 }
 
 p {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--negro);
     font-family: var(--fuentePrincipal);
@@ -77,3 +77,25 @@ h3 {
     font-size: 14px; /* Tamaño del texto */
     color: var(--blanco); /* Color del texto */
   }
+
+  .color-options {
+    display: flex;
+    gap: 10px;
+}
+
+.color-option {
+    display: inline-block;
+}
+
+.color-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid #fff;
+}
+
+.color-option input[type="radio"]:checked + .color-circle {
+    border: 2px solid #000;
+}
