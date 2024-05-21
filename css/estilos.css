@@ -71,12 +71,10 @@ h3 {
     text-align: center;
     overflow: hidden;
   }
-.publicidad p {
-    margin: 0;
-    padding: 10px;
-    font-size: 14px; /* Tamaño del texto */
-    color: var(--blanco); /* Color del texto */
-  }
+  .carousel-item img {
+    max-height: 200px; /* Ajusta esta altura según sea necesario */
+    object-fit: cover;
+}
 
   .color-options {
     display: flex;
