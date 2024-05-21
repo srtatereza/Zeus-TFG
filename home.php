@@ -71,7 +71,6 @@ if (isset($_REQUEST['Bienvenido'])) {
             foreach ($productos as $producto) {
                 echo '<div>';
                 echo '<h3 class="titulo">' . $producto->getNombre() . '</h3>';
-                echo '<p class="titulo">Código: ' . $producto->getIdProducto() . '</p>';
                 echo '<p class="titulo">Precio: $' . $producto->getPrecio() . '</p>';
                 echo '<img src="' . $producto->getImagen() . '" alt="' . $producto->getNombre() . '">';
                 
@@ -80,6 +79,7 @@ if (isset($_REQUEST['Bienvenido'])) {
                 echo '<input type="hidden" name="id_producto" value="' . $producto->getIdProducto() . '">';
                 echo '<input type="hidden" name="nombre" value="' . $producto->getNombre() . '">';
                 echo '<input type="hidden" name="precio" value="' . $producto->getPrecio() . '">';
+                echo '<input type="hidden" name="imagen" value="' . $producto->getImagen() . '">';
                 
                 // Campo para seleccionar la cantidad
                 echo '<label for="cantidad_' . $producto->getIdProducto() . '" class="label_cantidad">Cantidad:</label>';
@@ -88,10 +88,10 @@ if (isset($_REQUEST['Bienvenido'])) {
                 // Campo para seleccionar el color
                 echo '<label class="label_color">Color:</label>';
                 echo '<div class="color-options">';
-                foreach (array_unique($producto->colores) as $color) {
+                foreach ($producto->getColores() as $color) {
                     echo '<label class="color-option">';
-                    echo '<input type="radio" name="color" value="' . $color . '" style="display: none;">';
-                    echo '<span class="color-circle" style="background-color:' . $color . ';"></span>';
+                    echo '<input type="radio" name="color" value="' . $color->getIdColor() . '" style="display: none;">';
+                    echo '<span class="color-circle" style="background-color:' . $color->getBackgroundColor() . ';"></span>';
                     echo '</label>';
                 }
                 echo '</div>';
@@ -99,8 +99,8 @@ if (isset($_REQUEST['Bienvenido'])) {
                 // Campo para seleccionar la talla
                 echo '<label for="talla_' . $producto->getIdProducto() . '" class="label_talla">Talla:</label>';
                 echo '<select id="talla_' . $producto->getIdProducto() . '" name="talla">';
-                foreach (array_unique($producto->tallas) as $talla) {
-                    echo '<option value="' . $talla . '">' . strtoupper($talla) . '</option>';
+                foreach ($producto->getTallas() as $talla) {
+                    echo '<option value="' . $talla->getIdTalla() . '">' . strtoupper($talla->getNumeroTalla()) . '</option>';
                 }
                 echo '</select>';
                 

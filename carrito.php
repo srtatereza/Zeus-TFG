@@ -3,6 +3,8 @@ session_start();
 include_once 'classes/cliente.php';
 include_once 'classes/producto.php';
 include_once 'classes/pedido.php';
+include_once 'classes/color.php';
+include_once 'classes/talla.php';
 include_once 'include/zeus_tfg.php';
 ?>
 
@@ -29,22 +31,29 @@ error_reporting(E_ALL);
 
 // Agregar un producto al carrito
 if (isset($_POST['agregar_al_carrito'])) {
-    if (isset($_POST['id_producto'], $_POST['nombre'], $_POST['precio'], $_POST['cantidad'], $_POST['talla'], $_POST['color'])) {
+    $tallas = Talla::select();
+    $colores = Color::select();
+
+    if (isset($_POST['id_producto'], $_POST['nombre'], $_POST['precio'], $_POST['cantidad'], $_POST['talla'], $_POST['color'], $_POST['imagen'])) {
         $id_producto = trim($_POST['id_producto']);
         $nombre = trim($_POST['nombre']);
         $precio = trim($_POST['precio']);
+        $imagen = trim($_POST['imagen']);
         $cantidad = (int) trim($_POST['cantidad']);
-        $numero_talla = trim($_POST['talla']);
-        $nombre_color = trim($_POST['color']);
+        $id_talla = trim($_POST['talla']);
+        $id_color = trim($_POST['color']);
 
         // Aquí debes buscar en la base de datos el id_color y el id_talla correspondientes al nombre_color y numero_talla
         // y almacenarlos junto con otros detalles del producto en el carrito
 
+        $numero_talla = $tallas[$id_talla]->getNumeroTalla();
+        $nombre_color = $colores[$id_color]->getNombreColor();
         
         // Luego, cuando tengas los IDs, puedes almacenarlos en el carrito así:
         $_SESSION['carrito'][$id_producto] = array(
             'nombre' => $nombre,
             'precio' => $precio,
+            'imagen' => $imagen,
             'cantidad' => $cantidad,
             'numero_talla' => $numero_talla,
             'nombre_color' => $nombre_color,
@@ -104,6 +113,7 @@ if (isset($_POST['comprar'])) {
 if (!empty($_SESSION['carrito'])) {
     $total = 0;
     foreach ($_SESSION['carrito'] as $id_producto => $producto) {
+        echo '<img src="' . $producto['imagen'] . '" alt="' . $producto['nombre'] . '">';
         echo '<p class="titulo_c">Nombre: ' . $producto['nombre'] . '</p>';
         echo '<p class="titulo_c">Talla: ' . $producto['numero_talla'] . '</p>';
         echo '<p class="titulo_c">Color: ' . $producto['nombre_color'] . '</p>';

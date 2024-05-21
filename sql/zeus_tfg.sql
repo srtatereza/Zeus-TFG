@@ -1,15 +1,13 @@
-CREATE DATABASE  IF NOT EXISTS `zeus_tfg` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `zeus_tfg`;
--- MySQL dump 10.13  Distrib 8.0.25, for macos11 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: zeus_tfg
+-- Host: localhost    Database: zeus_tfg
 -- ------------------------------------------------------
--- Server version	5.7.44
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -25,15 +23,15 @@ DROP TABLE IF EXISTS `administrador`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `administrador` (
-  `id_administrador` int(11) NOT NULL,
+  `id_administrador` int NOT NULL,
   `usuario` varchar(45) NOT NULL,
   `contrasenia` varchar(60) NOT NULL,
-  `id_cliente` int(11) NOT NULL,
+  `id_cliente` int NOT NULL,
   PRIMARY KEY (`id_administrador`),
   UNIQUE KEY `usuario_UNIQUE` (`usuario`),
   KEY `id_cliente_idx` (`id_cliente`),
-  CONSTRAINT `id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +51,7 @@ DROP TABLE IF EXISTS `clientes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `clientes` (
-  `id_cliente` int(11) NOT NULL AUTO_INCREMENT COMMENT 'PK de la tabla clientes, de tipo primary autoincremental.',
+  `id_cliente` int NOT NULL AUTO_INCREMENT COMMENT 'PK de la tabla clientes, de tipo primary autoincremental.',
   `nombre` varchar(45) NOT NULL COMMENT 'nombre del cliente. de tipo varchar.',
   `apellido` varchar(45) NOT NULL COMMENT 'apellido del cliente de tipo varchar.',
   `direccion` varchar(45) NOT NULL COMMENT 'direccion del cliente de tipo varchar.',
@@ -62,7 +60,7 @@ CREATE TABLE `clientes` (
   `contrasenia` varchar(60) NOT NULL COMMENT 'contraseña del cliente, de tipo varchar.',
   PRIMARY KEY (`id_cliente`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,11 +81,11 @@ DROP TABLE IF EXISTS `colores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `colores` (
-  `id_color` int(11) NOT NULL AUTO_INCREMENT,
+  `id_color` int NOT NULL AUTO_INCREMENT,
   `nombre_color` varchar(50) NOT NULL,
   PRIMARY KEY (`id_color`),
   UNIQUE KEY `id_color_UNIQUE` (`id_color`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,22 +106,22 @@ DROP TABLE IF EXISTS `pedidos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pedidos` (
-  `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pedido` int NOT NULL AUTO_INCREMENT,
   `fecha` date NOT NULL COMMENT 'fecha donde se realizo el pedido, de tipo date.',
-  `id_cliente` int(11) NOT NULL COMMENT 'Fk de la tabla clientes , de tipo INT con indice Index.',
-  `id_producto` int(11) NOT NULL COMMENT 'Fk de la tabla productos, de tipo INT con indice Index.',
-  `cantidad_producto` int(11) NOT NULL,
+  `id_cliente` int NOT NULL COMMENT 'Fk de la tabla clientes , de tipo INT con indice Index.',
+  `id_producto` int NOT NULL COMMENT 'Fk de la tabla productos, de tipo INT con indice Index.',
+  `cantidad_producto` int NOT NULL,
   `estado_pedido` varchar(50) DEFAULT 'en preparación',
-  `id_color` int(11) NOT NULL,
-  `id_talla` int(11) NOT NULL,
+  `id_color` int NOT NULL,
+  `id_talla` int NOT NULL,
   PRIMARY KEY (`id_pedido`),
   KEY `id_producto` (`id_producto`),
   KEY `id_pedido` (`id_cliente`,`id_producto`) USING BTREE,
   KEY `idx_pedido` (`id_pedido`),
   KEY `fk_id_color` (`id_color`),
   CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`),
-  CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,18 +142,18 @@ DROP TABLE IF EXISTS `producto_color_talla`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `producto_color_talla` (
-  `id_producto_color_talla` int(11) NOT NULL AUTO_INCREMENT,
-  `id_producto` int(11) NOT NULL,
-  `id_talla` int(11) NOT NULL,
-  `id_color` int(11) NOT NULL,
+  `id_producto_color_talla` int NOT NULL AUTO_INCREMENT,
+  `id_producto` int NOT NULL,
+  `id_talla` int NOT NULL,
+  `id_color` int NOT NULL,
   PRIMARY KEY (`id_producto_color_talla`),
   KEY `id_talla_idx` (`id_talla`),
   KEY `id_color_idx` (`id_color`),
   KEY `id_producto_idx` (`id_producto`),
-  CONSTRAINT `id_color` FOREIGN KEY (`id_color`) REFERENCES `colores` (`id_color`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `id_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `id_talla` FOREIGN KEY (`id_talla`) REFERENCES `tallas` (`id_talla`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8;
+  CONSTRAINT `id_color` FOREIGN KEY (`id_color`) REFERENCES `colores` (`id_color`),
+  CONSTRAINT `id_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`),
+  CONSTRAINT `id_talla` FOREIGN KEY (`id_talla`) REFERENCES `tallas` (`id_talla`)
+) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +174,7 @@ DROP TABLE IF EXISTS `productos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productos` (
-  `id_producto` int(11) NOT NULL COMMENT 'PK de la tabla producto , de indice Primary',
+  `id_producto` int NOT NULL COMMENT 'PK de la tabla producto , de indice Primary',
   `nombre` varchar(45) NOT NULL COMMENT 'nombre del producto, de tipo Varchar.',
   `precio` double(10,2) NOT NULL COMMENT 'precio del producto, de tipo double para almacenar los valores reales en doble precisión.',
   `imagen` varchar(255) NOT NULL,
@@ -185,7 +183,7 @@ CREATE TABLE `productos` (
   UNIQUE KEY `codigo` (`id_producto`),
   UNIQUE KEY `codigo_2` (`id_producto`),
   KEY `idx_producto` (`id_producto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,10 +204,10 @@ DROP TABLE IF EXISTS `tallas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tallas` (
-  `id_talla` int(11) NOT NULL AUTO_INCREMENT,
+  `id_talla` int NOT NULL AUTO_INCREMENT,
   `numero_talla` varchar(50) NOT NULL,
   UNIQUE KEY `id_talla_UNIQUE` (`id_talla`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,4 +229,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-17 20:16:58
+-- Dump completed on 2024-05-21 18:28:53
