@@ -23,6 +23,9 @@ include_once 'include/zeus_tfg.php';
 
 <body>
 
+    <!-- Menu -->
+    <?php include "components/menu.php" ?>
+
     <?php
 
     // Establecer el nivel de reporte de errores
