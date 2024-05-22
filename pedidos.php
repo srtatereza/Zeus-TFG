@@ -53,9 +53,12 @@ $pedidos = Pedido::select($id_cliente);
                 <tr>
                     <th>ID Pedido</th>
                     <th>Fecha del Pedido</th>
-                    <th>Nombre del Producto</th>
+                    <th>Producto</th>
+                    <th>Color</th>
+                    <th>Talla</th>
                     <th>Cantidad</th>
-                    <th>Historial</th>
+                    <th>Estado</th>
+                    <!-- <th>Historial</th> -->
                 </tr>
                 <!-- Recorrer la lista de pedidos y mostrarlos en la tabla -->
                 <?php foreach ($pedidos as $pedido): ?>
@@ -63,14 +66,17 @@ $pedidos = Pedido::select($id_cliente);
                         <td><?php echo $pedido['id_pedido']; ?></td>
                         <td><?php echo $pedido['fecha']; ?></td>
                         <td><?php echo $pedido['nombre']; ?></td>
+                        <td><?php echo $pedido['color']; ?></td>
+                        <td><?php echo $pedido['talla']; ?></td>
                         <td><?php echo $pedido['cantidad_producto']; ?></td>
-                        <td>
-                            <!-- Formulario para eliminar el pedido específico -->
+                        <td><?php echo $pedido['estado']; ?></td>
+                        <!-- Formulario para eliminar el pedido específico -->
+                        <!-- <td>
                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                 <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
                                 <input type="submit" name="eliminar_pedido" value="Eliminar" class="formulario_submit">
                             </form>
-                        </td>
+                        </td> -->
                     </tr>
                 <?php endforeach; ?>
             </table>
