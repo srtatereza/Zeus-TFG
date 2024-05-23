@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'components/configuracion.php';
 include_once 'classes/producto.php';
 include_once 'classes/cliente.php';
 include_once 'classes/pedido.php';
@@ -27,15 +27,13 @@ $pedidos = Pedido::select($id_cliente);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda_Camisetas</title>
     <!-- Enlace al archivo CSS externo -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <?php include 'components/enlace.php'; ?>
 </head>
 
 <body>
 
     <!-- Menu -->
-    <?php include "components/menu.php" ?>
+    <?php include 'components/menu.php'; ?>
 
     <div class="contenedor">
         <div class="carrito-producto">

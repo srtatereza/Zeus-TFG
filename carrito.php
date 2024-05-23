@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'components/configuracion.php';
 include_once 'classes/cliente.php';
 include_once 'classes/producto.php';
 include_once 'classes/pedido.php';
@@ -16,22 +17,15 @@ include_once 'include/zeus_tfg.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda_Camisetas</title>
     <!-- Enlace al archivo CSS externo -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <?php include 'components/enlace.php'; ?>
 </head>
 
 <body>
 
     <!-- Menu -->
-    <?php include "components/menu.php" ?>
+    <?php include 'components/menu.php'; ?>
 
     <?php
-
-    // Establecer el nivel de reporte de errores
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 
     // Agregar un producto al carrito
     if (isset($_POST['agregar_al_carrito'])) {
@@ -106,11 +100,13 @@ include_once 'include/zeus_tfg.php';
                     // Vaciar el carrito después de la compra
                     $_SESSION['carrito'] = [];
 
+
                     echo '<p>Compra realizada con éxito.</p>';
                     echo '<a href="pedidos.php">Ver la factura de mi pedido</a>';
                     echo '<br>';
                 } catch(PDOException $e) {
                     error_log("Error en la base de datos: " . $e->getMessage());
+                    var_dump($e);
                     echo "<p>Error al realizar la compra, contacte con el administrador.</p>";
                 }
             }

@@ -1,6 +1,6 @@
 :root {
     --primario: #041e3a;
-    --secundario: #4b5e96; 
+    --secundario: #FCF3CF ; 
     --blanco: #FFF;
     --negro: #000;
 
@@ -18,9 +18,10 @@ html {
 
 /** Globales **/
 body {
-    background-color: var(--blanco);
+    background-color: var(--secundario);
     font-size: 1.6rem;
     line-height: 1.5;
+    color:var(--negro)
 }
 
 p {
@@ -72,8 +73,10 @@ h3 {
     overflow: hidden;
   }
   .carousel-item img {
-    max-height: 200px; /* Ajusta esta altura según sea necesario */
-    object-fit: cover;
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Puedes usar "contain" para mantener la relación de aspecto completa */
+    object-position: center; /* Esto centrará la imagen dentro del contenedor */
 }
 
   .color-options {
@@ -96,4 +99,12 @@ h3 {
 
 .color-option input[type="radio"]:checked + .color-circle {
     border: 2px solid green;
+}
+
+.navbar-nav {
+    width: 100%;
+    justify-content: center;
+}
+.navbar-nav .nav-item {
+    margin: 0 10px;
 }
