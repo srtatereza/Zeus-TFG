@@ -85,7 +85,16 @@ include_once 'classes/cliente.php';
       echo '</div>';
       ?>
     </div>
+
+    <div class="publicidad"> 
+      <h3>Publicidad</h3>
+      <img src="img/publicidad.png" alt="Publicidad">
+      <p> SNFVIOSDHBGNIJADNBGFIAJWSDHBFIJAS</p>
+    </div>
   </div>
+  <footer>
+    
+  </footer>
 </body>
 
 </html>

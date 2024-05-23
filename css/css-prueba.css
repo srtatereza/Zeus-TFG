@@ -1,7 +1,6 @@
-/** Globales **/
 :root {
     --primario: #041e3a;
-    --secundario: #a91e5a;
+    --secundario: #FCF3CF;
     --blanco: #FFF;
     --negro: #000;
 
@@ -17,12 +16,14 @@ html {
     box-sizing: inherit;
 }
 
+/** Globales **/
 body {
     background-color: var(--secundario);
     font-size: 1.6rem;
     line-height: 1.5;
     color: var(--negro);
 }
+
 p {
     font-size: 2rem;
     font-family: Arial, Helvetica, sans-serif;
@@ -64,11 +65,12 @@ h3 {
     font-size: 2.4rem;
 }
 
-.carousel-item img {
+.publicidad {
     width: 100%;
-    height: auto;
-    object-fit: contain;
-    object-position: center;
+    max-height: 50px;
+    background-color: var(--primario);
+    text-align: center;
+    overflow: hidden;
 }
 
 .carousel-item img {
@@ -100,6 +102,15 @@ h3 {
     border: 2px solid green;
 }
 
+.navbar-nav {
+    width: 100%;
+    justify-content: center;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+
 .contenedor {
     display: grid;
     justify-content: center;
@@ -119,60 +130,21 @@ img {
     max-width: 100%;
     height: auto;
 }
-/* Centrar horizontalmente la barra de navegación */
-.navbar-nav {
-    display: flex;
-    justify-content: center;
-    background-color: var(--primario);
-    padding: 0%;
-    margin: 0%;
 
-}
-.navbar.container-fluid {
-    display: flex;
-    flex-wrap: inherit;
-    align-items: center;
-    justify-content: space-evenly;
+@media screen and (max-width: 767px) {
+    .productos {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-/* Centrar verticalmente la imagen del logo y el título */
-.navbar-brand {
-    font-family: var(--fuentePrincipal);
-    color: var(--negro);
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .productos {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-/* Establecer un ancho máximo para la imagen del logo */
-.navbar-brand img {
-    max-width: 70px;
-    height: auto;
-}
-
-/* Ajustar el tamaño y el espaciado del título */
-.navbar-brand-title {
-    font-size: 2rem;
-    margin-left: 10px;
-}
-/* Aumentar el tamaño del ícono de la hamburguesa en dispositivos móviles */
-.navbar-toggler-icon {
-    font-size: 3rem; /* Ajusta el tamaño del ícono según tus preferencias */
-}
-
-.navbar-nav .nav-link {
-    font-size: 1.6rem; /* Tamaño de letra más pequeño para dispositivos móviles */
-    padding: 0%;
-    background-color: #041e3a;
-    margin: 0%;
-    color: var(--blanco);
-    cursor: pointer;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #c3266a; /* Cambia el color del texto del enlace cuando está sobre él */
-}
-
-
-.navbar-nav .nav-item {
-    margin: 10px 0; /* Ajusta el espaciado entre los elementos */
-    text-align: center; /* Centra el texto horizontalmente */
-    margin: 5px 0;
+@media screen and (min-width: 1024px) {
+    .productos {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
