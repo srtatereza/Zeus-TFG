@@ -26,11 +26,8 @@ CREATE TABLE `administrador` (
   `id_administrador` int NOT NULL,
   `usuario` varchar(45) NOT NULL,
   `contrasenia` varchar(60) NOT NULL,
-  `id_cliente` int NOT NULL,
   PRIMARY KEY (`id_administrador`),
-  UNIQUE KEY `usuario_UNIQUE` (`usuario`),
-  KEY `id_cliente_idx` (`id_cliente`),
-  CONSTRAINT `id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`)
+  UNIQUE KEY `usuario_UNIQUE` (`usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
