@@ -16,7 +16,7 @@ include_once 'classes/cliente.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>zeus</title>
+  <title>ZEUS</title>
   <!-- Enlace al archivo CSS externo -->
   <?php include 'components/enlace.php'; ?>
 </head>
@@ -91,9 +91,11 @@ include_once 'classes/cliente.php';
       });
     </script>
 
-
-
   </div>
+
+<div class="publicidad-dos">
+    <a class="visitanos" href="login.php">Visita nuestra Web</a>
+</div>
 
   <!-- Footer -->
   <?php include 'components/footer.php'; ?>

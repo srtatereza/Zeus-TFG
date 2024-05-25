@@ -1,6 +1,10 @@
 <?php
 session_start(); // Iniciar la sesión si no está iniciada
 $usuario_iniciado = isset($_SESSION['email']); // Verificar si el usuario ha iniciado sesión
+
+// Obtener el nombre del archivo actual
+$pagina_actual = basename($_SERVER['PHP_SELF']);
+
 ?>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EBEDEF;">
     <div class="container-fluid">
@@ -14,35 +18,40 @@ $usuario_iniciado = isset($_SESSION['email']); // Verificar si el usuario ha ini
         </button>
         <div id="navbarNav" class="collapse navbar-collapse justify-content-center" style="font-size: 2.5rem;">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Home">Características</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Precios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
-                </li>
+                <?php if ($usuario_iniciado) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="carrito.php">Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pedido.php">Pedido</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.php">Contacto</a>
+                    </li>
+                <?php else : ?>
+                    <?php if ($pagina_actual === 'index.php') : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                    <?php endif; ?>
+                <?php endif; ?>
             </ul>
             <ul class="navbar-nav mr-auto">
-                <?php
-                if ($usuario_iniciado) {
-                    // Si el usuario ha iniciado sesión, mostrar el botón de "Cerrar Sesión"
-                    echo '<li class="nav-item">';
-                    echo '<a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>';
-                    echo '</li>';
-                } else {
-                    // Si el usuario no ha iniciado sesión, mostrar el botón de "Iniciar Sesión" con el icono
-                    echo '<li class="nav-item">';
-                    echo '<a class="nav-link" href="login.php"><i class="fas fa-user"></i> Iniciar Sesión</a>';
-                    echo '</li>';
-                }
-                ?>
+                <?php if ($usuario_iniciado) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                    </li>
+                <?php else : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php"><i class="fas fa-user"></i> Iniciar Sesión</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
 </nav>
+
 
