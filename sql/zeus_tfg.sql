@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `administrador`
+-- Table structure for table `administradores`
 --
 
-DROP TABLE IF EXISTS `administrador`;
+DROP TABLE IF EXISTS `administradores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `administrador` (
+CREATE TABLE `administradores` (
   `id_administrador` int NOT NULL,
   `usuario` varchar(45) NOT NULL,
   `contrasenia` varchar(60) NOT NULL,
@@ -32,12 +32,13 @@ CREATE TABLE `administrador` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `administrador`
+-- Dumping data for table `administradores`
 --
 
-LOCK TABLES `administrador` WRITE;
-/*!40000 ALTER TABLE `administrador` DISABLE KEYS */;
-/*!40000 ALTER TABLE `administrador` ENABLE KEYS */;
+LOCK TABLES `administradores` WRITE;
+/*!40000 ALTER TABLE `administradores` DISABLE KEYS */;
+INSERT INTO `administradores` VALUES (1,'admin','$2y$10$RKM5Mtmausp8BMKY/QpIvOpLnO4UApNiV6vBvCDjACXTIVacppHJi');
+/*!40000 ALTER TABLE `administradores` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -226,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-21 18:28:53
+-- Dump completed on 2024-05-25 18:01:55
