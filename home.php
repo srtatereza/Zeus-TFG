@@ -5,16 +5,10 @@ include_once 'include/zeus_tfg.php';
 include_once 'classes/producto.php';
 include_once 'classes/cliente.php';
 
-// Ejecucion de una Cookie
-// Si han aceptado la política de Cookies
-if (isset($_REQUEST['Bienvenido'])) {
-    setcookie('politica', '1', time() + 600, '/');
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,38 +16,23 @@ if (isset($_REQUEST['Bienvenido'])) {
     <!-- Enlace al archivo CSS externo -->
     <?php include 'components/enlace.php'; ?>
 </head>
-
 <body>
-
     <!-- Menu -->
     <?php include 'components/menu.php'; ?>
-
-    <!-- Campo de la Cookie -->
-    <div>
-        <?php
-        if (!isset($_GET['Bienvenido']) && !isset($_COOKIE['politica'])) :
-        ?>
-            <!-- Mensaje de cookies -->
-            <div class="cookies">
-                <h2>Cookies</h2>
-                <p>¿Aceptas nuestras cookies?</p>
-                <a href="?Bienvenido">Sí, con todas sus consecuencias</a>
-            </div>
-        <?php endif; ?>
-    </div>
 
     <div class="contenedor">
         <?php
         // Verifica si hay una sesión activa
         if (isset($_SESSION['email'])) {
             $correoUsuario = htmlspecialchars($_SESSION['email']);
-            echo "<h1> Estas en Tu perfil, $correoUsuario. <br> Ahora puedes comprar lo que te guste.</h1>";
         } else {
             // Si no hay sesión activa, redirige al usuario al inicio de sesión
             header("Location: login.php");
             exit();
         }
         ?>
+      <!-- Carrusel -->
+<?php include 'components/carrusel.php'; ?>
 <!-- Productos -->
 <div class="productos">
     <?php
@@ -112,12 +91,8 @@ if (isset($_REQUEST['Bienvenido'])) {
     ?>
 </div>
 
-</div>
-    
-        <!-- Enlace para cerrar la sesión-->
-        <a href="cerrar.php">Cerrar sesión</a>
-
-    </div>
+    <!-- Footer -->
+    <?php include 'components/footer.php'; ?>
 
 </body>
 

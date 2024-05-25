@@ -2,7 +2,7 @@
 :root {
     --primario: #041e3a;
     --secundario: #4cc9f0;
-    --terciario: #FFF2FC ;
+    --terciario: #EBEDEF ;
     --blanco: #FFF;
     --negro: #000;
 
@@ -19,18 +19,11 @@ html {
 }
 
 body {
-    background-color: var(--terciario);
+    background-color: var(--blanco);
     font-size: 1.6rem;
     line-height: 1.5;
     color: var(--negro);
 }
-p {
-    font-size: 2rem;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--negro);
-    font-family: var(--fuentePrincipal);
-}
-
 a {
     text-decoration: none;
     font-size: 3rem;
@@ -45,6 +38,7 @@ img {
     max-width: 120rem;
     margin: 0 auto;
     height: auto;
+    background-color: var(--terciario);
 }
 
 h1, h2, h3 {
@@ -64,32 +58,22 @@ h2 {
 h3 {
     font-size: 2.4rem;
 }
-.contenedor {
-    display: grid;
-    justify-content: center;
-}
-
 .carousel-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: contain;
     object-position: center;
 }
 
-.carousel-item img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    object-position: center;
-}
 
 .publicidad p {
     text-align: center;
-    margin: 20px 0;
-    padding: 20px;
-    border: 1px solid #ddd;
+    padding: 10px;
     background-color:var(--primario);
-    color:var(--blanco)
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--blanco);
+    font-family: var(--fuentePrincipal);
   }
 
 
@@ -115,13 +99,6 @@ h3 {
     border: 2px solid green;
 }
 
-.titulo {
-    font-size: 18px;
-    margin-bottom: 5px;
-    color: var(--negro);
-    text-align: center;
-}
-
 img {
     max-width: 100%;
     height: auto;
@@ -133,8 +110,8 @@ img {
     background-color: var(--primario);
     padding: 0%;
     margin: 0%;
-
 }
+
 .navbar.container-fluid {
     display: flex;
     flex-wrap: inherit;
@@ -159,6 +136,7 @@ img {
     font-size: 2rem;
     margin-left: 10px;
 }
+
 /* Aumentar el tamaño del ícono de la hamburguesa en dispositivos móviles */
 .navbar-toggler-icon {
     font-size: 3rem; /* Ajusta el tamaño del ícono según tus preferencias */
@@ -177,53 +155,58 @@ img {
     color: var(--secundario); /* Cambia el color del texto del enlace cuando está sobre él */
 }
 
-
 .navbar-nav .nav-item {
     margin: 10px 0; /* Ajusta el espaciado entre los elementos */
     text-align: center; /* Centra el texto horizontalmente */
-    margin: 5px 0;
 }
-.productos {
+
+.productos .card {
+    height: 100%;
     display: flex;
-    flex-direction: column; /* Alinea los elementos en una columna */
-    align-items: center; /* Centra los elementos horizontalmente */
-    font-size: 1.5rem;
-    color: var(--negro);
-    text-align: center;
-  }
-  
-  .productos img {
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.productos img {
     margin-top: 30px;
     max-width: 100%; /* Asegura que la imagen no se extienda más allá de su contenedor */
-  }
-  
-  button.comprar-btn {
+}
+
+button.comprar-btn {
     background-color: var(--secundario);
     padding: 5px;
     color: var(--negro);
     border-radius: 1rem;
     font-size: 2rem;
-  }
-  
-  .titulo {
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card-title,
+.card-text,
+.comprar-btn {
     margin-top: 10px;
     margin-bottom: 5px;
-  }
-  .titulo-precio {
-    margin-bottom: 5px;
-  }
-  .btn.btn-primary {
+    font-size: 2rem;
+}
+
+.btn.btn-primary {
     background-color: var(--secundario);
     color: var(--negro);
     /* Otros estilos que ya tenías */
-  }
+}
 
-  /* footer */
-  .footer-style {
+/* footer */
+.footer-style {
     padding-top: 30px;
     background-color: var(--primario);
     text-align: center;
-    color:var(--blanco);
+    color: var(--blanco);
     margin-top: 30px;
 }
 
@@ -231,8 +214,8 @@ footer h2 {
     margin-bottom: 10px;
     color: var(--blanco);
     font-size: 2rem;
-    
 }
+
 footer p {
     color: var(--blanco);
     font-size: 1.5rem;
@@ -248,17 +231,18 @@ footer p {
     font-size: 2.5rem;
     border-color: var(--secundario);
 }
+
 .footer-col ul.list-unstyled li a {
     text-decoration: none; /* Elimina la decoración subrayada */
     color: inherit; /* Utiliza el color de texto predeterminado */
     font-size: 1.5rem;
 }
-.creador h2{
+
+.creador h2 {
     font-size: 2rem;
     background-color: var(--secundario);
     color: var(--negro);
 }
-
 
 /* Alinear los iconos verticalmente en dispositivos medianos y grandes */
 @media (min-width: 768px) {
@@ -269,19 +253,53 @@ footer p {
         align-items: center; /* Centra los elementos verticalmente */
         text-align: center; /* Centra el texto */
     }
+
     .footer-col.redes-sociales h3 {
         margin-right: 10px; /* Espacio a la derecha del título */
     }
+
     .list-inline {
         display: flex;
         flex-direction: row; /* Alinea los elementos en fila */
         align-items: center; /* Centra los elementos verticalmente */
         justify-content: center; /* Centra los elementos horizontalmente */
     }
+
     .footer-col.redes-sociales .list-inline .btn-social {
         margin: 0 10px; /* Espaciado horizontal entre los iconos */
     }
 }
 
+/* Estilos para pantallas de ordenador */
+@media (min-width: 992px) {
+    /* Centrar horizontalmente la barra de navegación */
+    .navbar-nav {
+        justify-content: space-between;
+        background-color: transparent;
+        width: auto;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 2.5rem; /* Tamaño de letra más pequeño para dispositivos móviles */
+        padding: 10px;
+        color: var(--negro);
+        background-color: transparent;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    ul.navbar-nav.mr-auto{
+        margin-left: 200px;
+    }
 
 
+.navbar-brand img {
+    max-width: 120px;
+    height: auto;
+    margin-left: 30px;
+}
+span.navbar-brand {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+}

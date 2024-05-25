@@ -148,3 +148,34 @@ img {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+
+
+    /* Estilos para el logo */
+    .navbar-brand img {
+        max-width: 100px;
+        height: auto;
+    }
+
+    /* Estilos para el título */
+    .navbar-brand-title {
+        font-size: 2.5rem;
+    }
+
+    /* Estilos para los enlaces del menú */
+    .navbar-nav .nav-link {
+        font-size: 2rem;
+        padding: 0 20px; /* Agrega un espacio horizontal entre los enlaces */
+        background-color: transparent;
+        color: var(--negro);
+    }
+
+    /* Estilos para el botón de inicio de sesión */
+    .navbar-nav .nav-item:last-child {
+        margin-left: auto;
+        font-size: 2rem;
+    }
+    .navbar-expand-lg .navbar-collapse {
+       
+    }
+}

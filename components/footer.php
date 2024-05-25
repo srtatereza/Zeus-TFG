@@ -23,10 +23,12 @@
                 </ul>
             </div>
             <div class="col-md-4 footer-col">
-                <h2>Politicas</h2>
+                <h2>AVISO LEGAL</h2>
                 <ul class="list-unstyled">
-                    <li><a href="#">Privacidad</a></li>
-                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">POLÍTICA SOBRE COOKIES</a></li>
+                    <li><a href="#">DECLARACIÓN DE PRIVACIDAD</a></li>
+                    <li><a href="#">¿CÓMO PUEDO HACER UN CAMBIO O DEVOLUCIÓN?</a></li>
+                    <li><a href="#">CONÓCENOS</a></li>
                 </ul>
             </div>
         </div>
