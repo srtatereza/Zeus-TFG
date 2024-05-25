@@ -44,4 +44,18 @@ class Administrador
             throw $e;
         }
     }
+
+    public function cambiarContrasenia($id_administrador, $contrasenia)
+    {
+        $conexion = camisetasDB::connectDB();
+        $sql = "UPDATE administradores SET contrasenia = ? WHERE id_administrador = ?";
+        try {
+            $stmt = $conexion->prepare($sql);
+            $stmt->execute([$contrasenia, $id_administrador]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            // Relanzamos la excepcion
+            throw $e;
+        }
+    }
 }
