@@ -1,7 +1,8 @@
 /** Globales **/
 :root {
     --primario: #041e3a;
-    --secundario: #a91e5a;
+    --secundario: #4cc9f0;
+    --terciario: #FFF2FC ;
     --blanco: #FFF;
     --negro: #000;
 
@@ -18,7 +19,7 @@ html {
 }
 
 body {
-    background-color: var(--secundario);
+    background-color: var(--terciario);
     font-size: 1.6rem;
     line-height: 1.5;
     color: var(--negro);
@@ -63,12 +64,9 @@ h2 {
 h3 {
     font-size: 2.4rem;
 }
-
-.carousel-item img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    object-position: center;
+.contenedor {
+    display: grid;
+    justify-content: center;
 }
 
 .carousel-item img {
@@ -77,6 +75,23 @@ h3 {
     object-fit: contain;
     object-position: center;
 }
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+}
+
+.publicidad p {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color:var(--primario);
+    color:var(--blanco)
+  }
+
 
 .color-options {
     display: flex;
@@ -100,19 +115,11 @@ h3 {
     border: 2px solid green;
 }
 
-.contenedor {
-    display: grid;
-    justify-content: center;
-}
-
 .titulo {
     font-size: 18px;
     margin-bottom: 5px;
-}
-
-.precio {
-    font-weight: bold;
-    color: #333;
+    color: var(--negro);
+    text-align: center;
 }
 
 img {
@@ -167,7 +174,7 @@ img {
 }
 
 .navbar-nav .nav-link:hover {
-    color: #c3266a; /* Cambia el color del texto del enlace cuando está sobre él */
+    color: var(--secundario); /* Cambia el color del texto del enlace cuando está sobre él */
 }
 
 
@@ -176,3 +183,105 @@ img {
     text-align: center; /* Centra el texto horizontalmente */
     margin: 5px 0;
 }
+.productos {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    font-size: 1.5rem;
+    color: var(--negro);
+    text-align: center;
+  }
+  
+  .productos img {
+    margin-top: 30px;
+    max-width: 100%; /* Asegura que la imagen no se extienda más allá de su contenedor */
+  }
+  
+  button.comprar-btn {
+    background-color: var(--secundario);
+    padding: 5px;
+    color: var(--negro);
+    border-radius: 1rem;
+    font-size: 2rem;
+  }
+  
+  .titulo {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .titulo-precio {
+    margin-bottom: 5px;
+  }
+  .btn.btn-primary {
+    background-color: var(--secundario);
+    color: var(--negro);
+    /* Otros estilos que ya tenías */
+  }
+
+  /* footer */
+  .footer-style {
+    padding-top: 30px;
+    background-color: var(--primario);
+    text-align: center;
+    color:var(--blanco);
+    margin-top: 30px;
+}
+
+footer h2 {
+    margin-bottom: 10px;
+    color: var(--blanco);
+    font-size: 2rem;
+    
+}
+footer p {
+    color: var(--blanco);
+    font-size: 1.5rem;
+}
+
+.footer-col {
+    margin-bottom: 30px;
+}
+
+/* Agregar espaciado entre los iconos */
+.list-inline .btn-social {
+    margin: 6px;
+    font-size: 2.5rem;
+    border-color: var(--secundario);
+}
+.footer-col ul.list-unstyled li a {
+    text-decoration: none; /* Elimina la decoración subrayada */
+    color: inherit; /* Utiliza el color de texto predeterminado */
+    font-size: 1.5rem;
+}
+.creador h2{
+    font-size: 2rem;
+    background-color: var(--secundario);
+    color: var(--negro);
+}
+
+
+/* Alinear los iconos verticalmente en dispositivos medianos y grandes */
+@media (min-width: 768px) {
+    .footer-col.redes-sociales {
+        display: flex;
+        flex-direction: row; /* Alinea los elementos en fila */
+        justify-content: center; /* Centra los elementos horizontalmente */
+        align-items: center; /* Centra los elementos verticalmente */
+        text-align: center; /* Centra el texto */
+    }
+    .footer-col.redes-sociales h3 {
+        margin-right: 10px; /* Espacio a la derecha del título */
+    }
+    .list-inline {
+        display: flex;
+        flex-direction: row; /* Alinea los elementos en fila */
+        align-items: center; /* Centra los elementos verticalmente */
+        justify-content: center; /* Centra los elementos horizontalmente */
+    }
+    .footer-col.redes-sociales .list-inline .btn-social {
+        margin: 0 10px; /* Espaciado horizontal entre los iconos */
+    }
+}
+
+
+

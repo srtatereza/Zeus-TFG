@@ -38,24 +38,12 @@ include_once 'classes/cliente.php';
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="img/carrusel-dos.png" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
-        </div>
       </div>
       <div class="carousel-item">
         <img src="img/carrusel-uno.png" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
       </div>
       <div class="carousel-item">
         <img src="img/carrusel-tres.png" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -67,34 +55,63 @@ include_once 'classes/cliente.php';
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+
   <div class="contenedor">
+
+    <div class="publicidad">
+      <p>Alta calidad y estilo único. ¡Encuentra la tuya y destaca!</p>
+    </div>
 
     <div class="productos">
       <?php
       $productos = Producto::select();
       if (!empty($productos)) {
         foreach ($productos as $producto) {
-          echo '<div>';
-          echo '<h3 class="titulo">' . $producto->getNombre() . '</h3>';
-          echo '<p class="titulo">Precio: $' . $producto->getPrecio() . '</p>';
           echo '<img src="' . $producto->getImagen() . '" alt="' . $producto->getNombre() . '">';
+          echo '<h3 class="titulo">' . $producto->getNombre() . '</h3>';
+          echo '<p class="titulo-precio">Precio: $' . $producto->getPrecio() . '</p>';
+          echo '<button type="button" class="comprar-btn">Comprar</button>'; // Cambiado a un botón
         }
       } else {
         echo 'No hay productos disponibles en este momento.';
-      }
-      echo '</div>';
+      };
       ?>
     </div>
 
-    <div class="publicidad"> 
-      <h3>Publicidad</h3>
-      <img src="img/publicidad.png" alt="Publicidad">
-      <p> SNFVIOSDHBGNIJADNBGFIAJWSDHBFIJAS</p>
+<!-- Modal de inicio de sesión -->
+<div class="modal fade" id="sesionModal" tabindex="-1" role="dialog" aria-labelledby="sesionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Para comprar, debes iniciar sesión.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <a href="login.php" class="btn btn-primary">Continuar</a>
+      </div>
     </div>
   </div>
-  <footer>
-    
-  </footer>
+</div>
+
+<script>
+  $(document).ready(function() {
+    // Cuando se hace clic en el botón "Comprar"
+    $(".comprar-btn").click(function() {
+      // Mostrar el modal de inicio de sesión
+      $("#sesionModal").modal('show');
+    });
+
+    // Cuando se hace clic en el botón "No"
+    $(".modal-footer .btn-secondary").click(function() {
+      // Ocultar el modal de inicio de sesión
+      $("#sesionModal").modal('hide');
+    });
+  });
+</script>
+
+
+    <!-- Footer -->
+    <?php include 'components/footer.php'; ?>
 </body>
 
 </html>

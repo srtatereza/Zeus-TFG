@@ -56,7 +56,6 @@ if (isset($_REQUEST['Bienvenido'])) {
         ?>
 <!-- Productos -->
 <div class="productos">
-<div class="productos">
     <?php
     try {
         $productos = Producto::select();
