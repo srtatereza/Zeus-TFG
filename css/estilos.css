@@ -105,28 +105,6 @@ h3 {
     border-radius: 2rem;
 }
 
-.color-options {
-    display: flex;
-    gap: 10px;
-}
-
-.color-option {
-    display: inline-block;
-}
-
-.color-circle {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-    border: 1px solid var(--negro);
-}
-
-.color-option input[type="radio"]:checked+.color-circle {
-    border: 2px solid green;
-}
-
 img {
     max-width: 100%;
     height: auto;
@@ -402,6 +380,49 @@ input[type="submit"]:hover {
     color: var(--negro);
 }
 
+/* home */
+
+.form-group {
+    display: flex;
+    margin: 5px;
+}
+.card-text-precio {
+    font-size: 1.6rem;
+    font-weight: 500;
+    background-color: #DEFF7F;
+    border-radius: 0.5rem;
+    padding: 3px;
+}
+.form-control{
+    text-align: center;
+}
+.label_home {
+    background-color: transparent;
+    color: var(--negro);
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.color-option {
+    display: inline-block;
+    background-color: transparent;
+    padding: 3px;
+}
+
+.color-circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid var(--negro);
+}
+
+.color-option input[type="radio"]:checked+.color-circle {
+    border: 2px solid green;
+}
+
+
 /* Estilos para pantallas de ordenador */
 @media (min-width: 992px) {
 
@@ -438,6 +459,11 @@ input[type="submit"]:hover {
     }
 
 .contenedor-central-login {
+    font-size: 3rem;
+}
+
+.publicidad p {
+    padding: 30px;
     font-size: 3rem;
 }
 

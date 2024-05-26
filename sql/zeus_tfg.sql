@@ -16,6 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `administrador`
+--
+
+DROP TABLE IF EXISTS `administrador`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `administrador` (
+  `id_administrador` int NOT NULL,
+  `usuario` varchar(45) NOT NULL,
+  `contrasenia` varchar(60) NOT NULL,
+  `id_cliente` int NOT NULL,
+  PRIMARY KEY (`id_administrador`),
+  UNIQUE KEY `usuario_UNIQUE` (`usuario`),
+  KEY `id_cliente_idx` (`id_cliente`),
+  CONSTRAINT `id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `administrador`
+--
+
+LOCK TABLES `administrador` WRITE;
+/*!40000 ALTER TABLE `administrador` DISABLE KEYS */;
+/*!40000 ALTER TABLE `administrador` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `administradores`
 --
 
@@ -227,4 +255,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-25 18:01:55
+-- Dump completed on 2024-05-26 10:12:44

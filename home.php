@@ -33,17 +33,25 @@ include_once 'classes/cliente.php';
         ?>
       <!-- Carrusel -->
 <?php include 'components/carrusel.php'; ?>
+
+<div class="publicidad">
+    <p>Alta calidad y estilo único. ¡Encuentra la tuya y destaca!</p>
+  </div>
+
+<div class="contenedor-central">
 <!-- Productos -->
-<div class="productos">
+<div class="productos row">
     <?php
     try {
         $productos = Producto::select();
         if (!empty($productos)) {
             foreach ($productos as $producto) {
-                echo '<div>';
-                echo '<h3 class="titulo">' . $producto->getNombre() . '</h3>';
-                echo '<p class="titulo">Precio: $' . $producto->getPrecio() . '</p>';
-                echo '<img src="' . $producto->getImagen() . '" alt="' . $producto->getNombre() . '">';
+                echo '<div class="col-6 col-md-4 col-lg-3 mb-4">';
+                echo '<div class="card">';
+                echo '<img src="' . $producto->getImagen() . '" class="card-img-top" alt="' . $producto->getNombre() . '">';
+                echo '<div class="card-body">';
+                echo '<h3 class="card-title">' . $producto->getNombre() . '</h3>';
+                echo '<p class="card-text-precio">Precio: $' . $producto->getPrecio() . '</p>';
                 
                 // Formulario para agregar al carrito
                 echo '<form action="carrito.php" method="post">';
@@ -53,11 +61,24 @@ include_once 'classes/cliente.php';
                 echo '<input type="hidden" name="imagen" value="' . $producto->getImagen() . '">';
                 
                 // Campo para seleccionar la cantidad
-                echo '<label for="cantidad_' . $producto->getIdProducto() . '" class="label_cantidad">Cantidad:</label>';
-                echo '<input type="number" id="cantidad_' . $producto->getIdProducto() . '" name="cantidad" min="1" max="10" value="1">';
-                
+                echo '<div class="form-group">';
+                echo '<label for="cantidad_' . $producto->getIdProducto() . '" class="label_home">Cantidad:</label>';
+                echo '<input type="number" id="cantidad_' . $producto->getIdProducto() . '" name="cantidad" class="form-control" style="font-size: 1.5rem;" min="1" max="10" value="1">';
+                echo '</div>';
+            
+                // Campo para seleccionar la talla
+                echo '<div class="form-group">';
+                echo '<label for="talla_' . $producto->getIdProducto() . '" class="label_home">Talla:</label>';
+                echo '<select id="talla_' . $producto->getIdProducto() . '" name="talla" class="form-control" " style="font-size: 1.5rem;">';
+                foreach ($producto->getTallas() as $talla) {
+                    echo '<option value="' . $talla->getIdTalla() . '">' . strtoupper($talla->getNumeroTalla()) . '</option>';
+                }
+                echo '</select>';
+                echo '</div>';
+
                 // Campo para seleccionar el color
-                echo '<label class="label_color">Color:</label>';
+                echo '<div class="form-group-color">';
+                echo '<label class="label_home">Color:</label>';
                 echo '<div class="color-options">';
                 foreach ($producto->getColores() as $color) {
                     echo '<label class="color-option">';
@@ -66,27 +87,21 @@ include_once 'classes/cliente.php';
                     echo '</label>';
                 }
                 echo '</div>';
-                
-                // Campo para seleccionar la talla
-                echo '<label for="talla_' . $producto->getIdProducto() . '" class="label_talla">Talla:</label>';
-                echo '<select id="talla_' . $producto->getIdProducto() . '" name="talla">';
-                foreach ($producto->getTallas() as $talla) {
-                    echo '<option value="' . $talla->getIdTalla() . '">' . strtoupper($talla->getNumeroTalla()) . '</option>';
-                }
-                echo '</select>';
-                
-                echo '<br>';
+                echo '</div>';
                 
                 // Botón para agregar al carrito
-                echo '<input type="submit" name="agregar_al_carrito" value="Agregar al Carrito" class="formulario_submit">';
+                echo '<button type="submit" name="agregar_al_carrito" class="btn btn-primary">Agregar al Carrito</button>';
                 echo '</form>';
-                echo '</div>';
+                
+                echo '</div>'; // cierre de card-body
+                echo '</div>'; // cierre de card
+                echo '</div>'; // cierre de col
             }
         } else {
-            echo 'No hay productos disponibles en este momento.';
+            echo '<div class="col-12"><p>No hay productos disponibles en este momento.</p></div>';
         }
-    } catch (PDOException $e) {
-        die('Error al conectarse a la base de datos: ' . $e->getMessage());
+    } catch (Exception $e) {
+        echo '<div class="col-12"><p>Hubo un error al cargar los productos.</p></div>';
     }
     ?>
 </div>
