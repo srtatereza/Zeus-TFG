@@ -29,8 +29,12 @@ body {
 
 a {
     text-decoration: none;
-    font-size: 3rem;
+    font-size: 2rem;
     font-family: var(--fuentePrincipal);
+}
+p {
+    font-size: 2rem;
+    font-family: var(--fuentePrincipal);  
 }
 
 img {
@@ -50,18 +54,15 @@ h3 {
     text-align: center;
     color: var(--negro);
     font-family: var(--fuentePrincipal);
+    font-size: 3rem;
 }
 
-h1 {
+h1{
     font-size: 3rem;
 }
 
 h2 {
-    font-size: 2.7rem;
-}
-
-h3 {
-    font-size: 2.4rem;
+    font-size: 2.5rem;
 }
 
 .carousel-item img {
@@ -231,7 +232,6 @@ button.comprar-btn {
     background-color: var(--primario);
     text-align: center;
     color: var(--blanco);
-    margin-top: 30px;
 }
 
 footer h2 {
@@ -386,6 +386,9 @@ input[type="submit"]:hover {
     display: flex;
     margin: 5px;
 }
+.mensaje{
+    font-size: 1.5rem;
+}
 .card-text-precio {
     font-size: 1.6rem;
     font-weight: 500;
@@ -422,6 +425,28 @@ input[type="submit"]:hover {
     border: 2px solid green;
 }
 
+button.btn.btn-danger, 
+button.btn.btn-warning, 
+button.btn.btn-success {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.contenedor-inferior-carrito{
+    display: flex;
+    justify-content: center;
+    margin-bottom:30px;
+    margin-top: 10px;
+}
+.productos-carrito a {
+    text-decoration: none;
+    font-size: 2.5rem;
+}
+.mensaje-producto{
+text-align: center;
+color:red;
+}
 
 /* Estilos para pantallas de ordenador */
 @media (min-width: 992px) {
@@ -465,6 +490,17 @@ input[type="submit"]:hover {
 .publicidad p {
     padding: 30px;
     font-size: 3rem;
+}
+button.btn.btn-danger, 
+button.btn.btn-warning, 
+button.btn.btn-success {
+    font-size: 2rem;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.mensaje {
+    font-size: 2rem;
 }
 
 }
