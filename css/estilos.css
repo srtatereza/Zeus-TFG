@@ -309,7 +309,9 @@ footer p {
     background-color: var(--blanco);
     margin-bottom: 100px;
     margin-top: 50px;
-    font-size: 2rem;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 120rem;
 }
 
 .contenedor-central-login p {
@@ -332,10 +334,9 @@ footer p {
     border-radius: 10px;
     max-width: 400px;
     margin: 0 auto;
-    /* Centra el contenedor horizontalmente */
-    margin-top: 50px;
     /* Espacio superior */
     font-size: 2rem;
+    height: 0 auto;
 }
 .contenedor-login h2 {
     font-size: 2.5rem;
@@ -480,6 +481,16 @@ color:red;
     margin-bottom: 20px;
     margin-top: 20px;
 }
+input#usuario.form-control,
+input#contrasenia.form-control,
+input#password1.form-control,
+input#password2.form-control{
+    margin-left: 2rem;
+}
+input#usuario.form-control{
+    font-size: 2rem;
+    padding: 0.1rem;
+}
 
 /* Estilos para pantallas de ordenador */
 @media (min-width: 992px) {
@@ -516,8 +527,13 @@ color:red;
         margin-right: 20px;
     }
 
+/* LOGIN */
 .contenedor-central-login {
     font-size: 3rem;
+}
+.contenedor-login {
+    margin: 0 auto;
+    height: auto;
 }
 
 .publicidad p {

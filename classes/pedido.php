@@ -11,8 +11,9 @@ class Pedido
     private $cantidad_producto;
     private $id_color;
     private $id_talla;
+    private $estado_pedido;
 
-    function __construct($fecha, $id_cliente, $id_producto, $cantidad_producto, $id_color, $id_talla)
+    function __construct($fecha, $id_cliente, $id_producto, $cantidad_producto, $id_color, $id_talla, $estado_pedido,)
     {
         $this->id_pedido = null;
         $this->fecha = $fecha;
@@ -21,6 +22,7 @@ class Pedido
         $this->cantidad_producto = $cantidad_producto;
         $this->id_color = $id_color;
         $this->id_talla = $id_talla;
+        $this->estado_pedido = $estado_pedido;
     }
 
     public function getId_pedido()
@@ -54,6 +56,10 @@ class Pedido
     public function getId_talla()
     {
         return $this->id_talla;
+    }
+    public function getEstado_pedido()
+    {
+        return $this->estado_pedido;
     }
 
     // Método para insertar el pedido en la base de datos
@@ -131,4 +137,35 @@ class Pedido
             echo "Error al eliminar el pedido: " . $e->getMessage();
         }
     }
+
+// Método para obtener todos los pedidos de la base de datos
+public static function selectAllPedidos() {
+    try {
+        $conexion = camisetasDB::connectDB();
+        $sql = "SELECT * FROM pedidos";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (Exception $e) {
+        // Manejar el error
+        echo "Error al seleccionar todos los pedidos: " . $e->getMessage();
+        return false;
+    }
+}
+
+// Método para actualizar el estado de un pedido por su ID
+public static function updateEstadoPedido($id_pedido, $estado_pedido) {
+    try {
+        $conexion = camisetasDB::connectDB();
+        $sql = "UPDATE pedidos SET estado_pedido = ? WHERE id_pedido = ?";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute([$estado_pedido, $id_pedido]);
+    } catch (Exception $e) {
+        // Manejar el error
+        echo "Error al actualizar el estado del pedido: " . $e->getMessage();
+    }
+}
+
+
 }

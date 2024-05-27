@@ -99,7 +99,7 @@ include_once 'include/zeus_tfg.php';
 
                     // Crear y ejecutar la inserción del pedido
                     try {
-                        $pedido = new Pedido($fechaCompra, $id_cliente, $id_producto, $cantidad_producto, $id_color, $id_talla);
+                        $pedido = new Pedido($fechaCompra, $id_cliente, $id_producto, $cantidad_producto, $id_color, $id_talla, 'en preparación');
                         $pedido->insert();
 
                         // Vaciar el carrito después de la compra
