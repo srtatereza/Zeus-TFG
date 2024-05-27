@@ -448,6 +448,39 @@ text-align: center;
 color:red;
 }
 
+.table th,
+.table td {
+    border: 1px solid #9f9f9f;
+    padding: 5px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.table-th {
+    background-color: var(--primario) !important; /* Color de fondo para los encabezados */
+    color: var(--blanco) !important; /* Color del texto para los encabezados */
+}
+
+.table-td {
+    background-color: #ecfeff !important ; /* Color de fondo para las celdas */
+}
+
+.publicidad-dos {
+    text-align: center;
+    margin-top: 20px;
+}
+.container-contacto {
+    margin: 20px;
+    text-align: center;
+}
+.contacto-p {
+    font-size: 1.5rem; /* Tamaño de fuente más grande para tabletas y ordenadores */
+}
+.img-fluid {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
 /* Estilos para pantallas de ordenador */
 @media (min-width: 992px) {
 
@@ -489,7 +522,7 @@ color:red;
 
 .publicidad p {
     padding: 30px;
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 button.btn.btn-danger, 
 button.btn.btn-warning, 
@@ -501,6 +534,13 @@ button.btn.btn-success {
 
 .mensaje {
     font-size: 2rem;
+}
+.table-th, .table-td {
+    font-size: 1.5rem !important;
+}
+.contacto-p {
+    font-size: 1.8rem; /* Tamaño de fuente más grande para tabletas y ordenadores */
+
 }
 
 }

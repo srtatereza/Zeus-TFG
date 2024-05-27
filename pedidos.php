@@ -25,7 +25,7 @@ $pedidos = Pedido::select($id_cliente);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda_Camisetas</title>
+    <title>Pedidos</title>
     <!-- Enlace al archivo CSS externo -->
     <?php include 'components/enlace.php'; ?>
 </head>
@@ -34,62 +34,74 @@ $pedidos = Pedido::select($id_cliente);
 
     <!-- Menu -->
     <?php include 'components/menu.php'; ?>
+    <div class="publicidad">
+                    <p>Alta calidad y estilo único.</p>
+                </div>
 
-    <div class="contenedor">
-        <div class="carrito-producto">
-            <h2>Pedidos del Cliente</h2>
+    <div class="contenedor-central">
+    </div>
+
+    <div class="row">
+    <div class="col-12 col-md-8 mx-auto">
+        <div class="pedidos">
+            <h2>Mis pedidos</h2>
 
             <!-- Tabla de pedidos -->
             <!-- Verificar si hay pedidos para mostrarlos -->
             <?php if (!empty($pedidos)) { ?>
-                <table aria-describedby="tabla de pedidos">
-                    <tr>
-                        <th>ID Pedido</th>
-                        <th>Fecha del Pedido</th>
-                        <th>Producto</th>
-                        <th>Color</th>
-                        <th>Talla</th>
-                        <th>Cantidad</th>
-                        <th>Estado</th>
-                        <!-- <th>Historial</th> -->
-                    </tr>
-                    <!-- Recorrer la lista de pedidos y mostrarlos en la tabla -->
-                    <?php foreach ($pedidos as $pedido) : ?>
-                        <tr>
-                            <td><?php echo $pedido['id_pedido']; ?></td>
-                            <td><?php echo $pedido['fecha']; ?></td>
-                            <td><?php echo $pedido['nombre']; ?></td>
-                            <td><?php echo $pedido['color']; ?></td>
-                            <td><?php echo $pedido['talla']; ?></td>
-                            <td><?php echo $pedido['cantidad_producto']; ?></td>
-                            <td><?php echo $pedido['estado']; ?></td>
-                            <!-- Formulario para eliminar el pedido específico -->
-                            <!-- <td>
-                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
-                                <input type="submit" name="eliminar_pedido" value="Eliminar" class="formulario_submit">
-                            </form>
-                        </td> -->
-                        </tr>
-                    <?php endforeach; ?>
-                </table>
-                <!-- No hay pedidos para mostrar -->
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="table-th">Fecha del Pedido</th>
+                                <th class="table-th">Producto</th>
+                                <th class="table-th">Color</th>
+                                <th class="table-th">Talla</th>
+                                <th class="table-th">Cantidad</th>
+                                <th class="table-th">Estado</th>
+                                <!-- <th>Historial</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Recorrer la lista de pedidos y mostrarlos en la tabla -->
+                            <?php foreach ($pedidos as $pedido) : ?>
+                                <tr>
+                                    <td class="table-td"><?php echo $pedido['fecha']; ?></td>
+                                    <td class="table-td"><?php echo $pedido['nombre']; ?></td>
+                                    <td class="table-td"><?php echo $pedido['color']; ?></td>
+                                    <td class="table-td"><?php echo $pedido['talla']; ?></td>
+                                    <td class="table-td"><?php echo $pedido['cantidad_producto']; ?></td>
+                                    <td class="table-td"><?php echo $pedido['estado']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                     <!-- No hay pedidos para mostrar -->
             <?php } else { ?>
-                <p>No hay pedidos para mostrar.</p>
+                <p class="mensaje-producto">No hay pedidos para mostrar.</p>
             <?php } ?>
+
+        <div class="row">
+            <div class="col-12 col-md-8 mx-auto">
+                <div class="publicidad-dos">
+                    <?php
+                    // Enlace para volver a home
+                    echo '<a href="home.php">Seguir Comprando</a>';
+                    echo '<br>';
+                    ?>
+                </div>
+            </div>
         </div>
-
-        <br>
-        <!-- Enlace para el home-->
-        <a href="home.php">Seguir Comprando</a>
-        <br>
-        <br>
-
-        <!-- Enlace para cerrar la sesión-->
-        <a href="cerrar.php">Cerrar sesión</a>
+    </div>
 
     </div>
 
+    <!-- Footer -->
+    <?php include 'components/footer.php'; ?>
 </body>
+
+
+
 
 </html>

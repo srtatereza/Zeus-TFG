@@ -20,16 +20,16 @@ $pagina_actual = basename($_SERVER['PHP_SELF']);
             <ul class="navbar-nav">
                 <?php if ($usuario_iniciado) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="home.php">Home</a>
+                        <a class="nav-link" href="/home.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="carrito.php">Carrito</a>
+                        <a class="nav-link" href="/carrito.php">Carrito</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pedido.php">Pedido</a>
+                        <a class="nav-link" href="/pedidos.php">Pedido</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contacto.php">Contacto</a>
+                        <a class="nav-link" href="/contacto.php">Contacto</a>
                     </li>
                 <?php else : ?>
                     <?php if ($pagina_actual === 'index.php') : ?>
@@ -42,11 +42,11 @@ $pagina_actual = basename($_SERVER['PHP_SELF']);
             <ul class="navbar-nav mr-auto">
                 <?php if ($usuario_iniciado) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                        <a class="nav-link" href="/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                     </li>
                 <?php else : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php"><i class="fas fa-user"></i> Iniciar Sesión</a>
+                        <a class="nav-link" href="/login.php"><i class="fas fa-user"></i> Iniciar Sesión</a>
                     </li>
                 <?php endif; ?>
             </ul>
