@@ -17,10 +17,11 @@ include_once 'classes/administrador.php';
 </head>
 
 <body>
+    <!-- Menú -->
+    <?php include 'components/menu.php'; ?>
     <div class="publicidad">
         <p>Bienvenido, Administrador</p>
     </div>
-
 
     <div class="contenedor-central-login">
         <?php
@@ -86,7 +87,7 @@ include_once 'classes/administrador.php';
                     if ($adminEncontrado && password_verify($contrasenia, $adminEncontrado['contrasenia'])) {
                         $_SESSION['id_administrador'] = $adminEncontrado['id_administrador'];
                         $_SESSION['administrador'] = $adminEncontrado['usuario'];
-                        header("Location: admin.php");
+                        header("Location: pedidos-tienda.php");
                     } else {
                         $mensajeError = "Usuario o contraseña incorrectos.";
                     }

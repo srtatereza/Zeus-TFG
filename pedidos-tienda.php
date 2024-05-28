@@ -86,6 +86,7 @@ $pedidos = Pedido::selectAllPedidos();
                                                     <option value="En preparación" <?php if ($pedido['estado_pedido'] == "En preparación") echo 'selected'; ?>>En preparación</option>
                                                     <option value="En Reparto" <?php if ($pedido['estado_pedido'] == "En Reparto") echo 'selected'; ?>>En Reparto</option>
                                                     <option value="Entregado" <?php if ($pedido['estado_pedido'] == "Entregado") echo 'selected'; ?>>Entregado</option>
+                                                    <option value="Cancelado" <?php if ($pedido['estado_pedido'] == "Cancelado") echo 'selected'; ?>>Cancelado</option>
                                                 </select>
                                                 <button type="submit" name="actualizar_estado_pedido" class="btn btn-primary">Actualizar</button>
                                             </form>
