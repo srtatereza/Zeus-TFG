@@ -107,14 +107,14 @@ $adminIniciado = $_SESSION['id_administrador'];
                     <!-- Formulario de inicio de sesión -->
                     <h2>Iniciar sesión</h2>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="formulario">
-                        <div class="form-group">
-                            <label for="usuario">Usuario:</label>
-                            <input type="text" name="usuario" id="usuario" placeholder="Usuario" required autocomplete="username" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="contrasenia">Contraseña:</label>
-                            <input type="password" name="contrasenia" id="contrasenia" placeholder="Contraseña" required autocomplete="current-password" class="form-control">
-                        </div>
+                        <label for="usuario">Usuario</label>
+                        <input type="text" name="usuario" id="usuario" placeholder="administrador" required autocomplete="username">
+                        <br>
+
+                        <label for="contrasenia">Contraseña</label>
+                        <input type="password" name="contrasenia" id="contrasenia" placeholder="**********" required autocomplete="current-password">
+
+                        <br>
                         <input type="submit" name="login_admin" value="Iniciar sesión" class="formulario_submit">
                     </form>
                 </div>
