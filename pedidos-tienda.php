@@ -45,56 +45,55 @@ $pedidos = Pedido::selectAllPedidos();
     <!-- Menú -->
     <?php include 'components/menu.php'; ?>
 
+    <!-- Publicidad -->
     <div class="publicidad">
         <p>Gestiona el estado de los pedidos</p>
     </div>
-
+    <!-- Contenedor para mostrar todos los pedidos -->
     <div class="contenedor-central">
-        <div class="row">
-            <div class="col-12">
-                <div class="pedidos">
-                    <h2>Lista de Pedidos</h2>
+        <div class="col-12 col-md-8 mx-auto">
+            <div class="pedidos">
+                <!-- Tabla de pedidos -->
                     <div class="table-responsive">
                         <table class="table">
-                            <thead>
+                        <thead>
+                            <tr>
+                                <th class="table-th">ID Pedido</th>
+                                <th class="table-th">Fecha</th>
+                                <th class="table-th">Cliente</th>
+                                <th class="table-th">Producto</th>
+                                <th class="table-th">Cantidad</th>
+                                <th class="table-th">Color</th>
+                                <th class="table-th">Talla</th>
+                                <th class="table-th">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($pedidos as $pedido) : ?>
                                 <tr>
-                                    <th>ID Pedido</th>
-                                    <th>Fecha</th>
-                                    <th>Cliente</th>
-                                    <th>Producto</th>
-                                    <th>Cantidad</th>
-                                    <th>Color</th>
-                                    <th>Talla</th>
-                                    <th>Estado</th>
+                                    <td class="table-td"><?php echo $pedido['id_pedido']; ?></td>
+                                    <td class="table-td"><?php echo $pedido['fecha']; ?></td>
+                                    <td class="table-td"><?php echo $pedido['nombre_cliente'] . " " . $pedido['apellido_cliente']; ?></td>
+                                    <td class="table-td"><?php echo $pedido['nombre_producto']; ?></td>
+                                    <td class="table-td"><?php echo $pedido['cantidad_producto']; ?></td>
+                                    <td class="table-td"><?php echo $pedido['color']; ?></td>
+                                    <td class="table-td"><?php echo $pedido['talla']; ?></td>
+                                    <td class="table-td">
+                                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                            <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
+                                            <select name="estado_pedido" class="form-control estado-pedido">
+                                                <option value="En preparación" <?php if ($pedido['estado_pedido'] == "En preparación") echo 'selected'; ?>>En preparación</option>
+                                                <option value="En Reparto" <?php if ($pedido['estado_pedido'] == "En Reparto") echo 'selected'; ?>>En Reparto</option>
+                                                <option value="Entregado" <?php if ($pedido['estado_pedido'] == "Entregado") echo 'selected'; ?>>Entregado</option>
+                                                <option value="Cancelado" <?php if ($pedido['estado_pedido'] == "Cancelado") echo 'selected'; ?>>Cancelado</option>
+                                            </select>
+                                            <button type="submit" name="actualizar_estado_pedido" class="btn btn-primary">Actualizar</button>
+                                        </form>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($pedidos as $pedido) : ?>
-                                    <tr>
-                                        <td><?php echo $pedido['id_pedido']; ?></td>
-                                        <td><?php echo $pedido['fecha']; ?></td>
-                                        <td><?php echo $pedido['nombre_cliente'] . " " . $pedido['apellido_cliente']; ?></td>
-                                        <td><?php echo $pedido['nombre_producto']; ?></td>
-                                        <td><?php echo $pedido['cantidad_producto']; ?></td>
-                                        <td><?php echo $pedido['color']; ?></td>
-                                        <td><?php echo $pedido['talla']; ?></td>
-                                        <td>
-                                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                                <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
-                                                <select name="estado_pedido" class="form-control estado-pedido">
-                                                    <option value="En preparación" <?php if ($pedido['estado_pedido'] == "En preparación") echo 'selected'; ?>>En preparación</option>
-                                                    <option value="En Reparto" <?php if ($pedido['estado_pedido'] == "En Reparto") echo 'selected'; ?>>En Reparto</option>
-                                                    <option value="Entregado" <?php if ($pedido['estado_pedido'] == "Entregado") echo 'selected'; ?>>Entregado</option>
-                                                    <option value="Cancelado" <?php if ($pedido['estado_pedido'] == "Cancelado") echo 'selected'; ?>>Cancelado</option>
-                                                </select>
-                                                <button type="submit" name="actualizar_estado_pedido" class="btn btn-primary">Actualizar</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -103,6 +102,5 @@ $pedidos = Pedido::selectAllPedidos();
     <!-- Footer -->
     <?php include 'components/footer.php'; ?>
 </body>
-
 
 </html>

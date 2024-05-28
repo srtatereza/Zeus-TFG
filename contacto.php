@@ -22,15 +22,16 @@ include_once 'classes/cliente.php';
     <!-- Menu -->
     <?php include 'components/menu.php'; ?>
 
+    <!-- Publicidad -->
     <div class="publicidad">
         <p>Alta calidad y estilo único. ¡Encuentra la tuya y destaca!</p>
     </div>
- 
+
 
     <div class="container-contacto">
         <!-- Descripción de la tienda -->
         <div class="row description-container">
-            <div class="col-12 d-flex flex-column"> <!-- Usando flexbox para la descripción -->
+            <div class="col-12 d-flex flex-column"> <!-- Css para la descripción y la img-->
                 <h2>Sobre nuestra tienda</h2>
                 <p class="contacto-p">Nuestra tienda, fundada en 2018, se dedica a ofrecer productos de la más alta calidad a nuestros clientes.
                     Contamos con la mejor maquinaria del mercado, lo que nos permite producir mercancía de calidad superior.
@@ -51,7 +52,7 @@ include_once 'classes/cliente.php';
         </div>
         <!-- Información de contacto -->
         <div class="row contact-container">
-            <div class="col-12 text-center"> <!-- Centrando el contenido -->
+            <div class="col-12 text-center"> <!-- Css -->
                 <h2>Contactanos</h2>
                 <p class="contacto-p">Correo electrónico: contacto@tiendazeus.com</p>
                 <p class="contacto-p">Teléfono: +123 456 789</p>

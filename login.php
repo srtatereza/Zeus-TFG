@@ -63,11 +63,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logarse"])) {
             <h2>Iniciar sesión</h2>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="formulario">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="email@ejemplo.com" required autocomplete="username">
+                <input type="email" name="email" placeholder="email@ejemplo.com" required autocomplete="username">
                 <br>
 
                 <label for="contrasenia">Contraseña</label>
-                <input type="password" name="contrasenia" id="contrasenia" placeholder="**********" required autocomplete="current-password">
+                <input type="password" name="contrasenia" placeholder="**********" required autocomplete="current-password">
 
                 <br>
                 <input type="submit" name="logarse" value="Iniciar sesión" class="formulario_submit">

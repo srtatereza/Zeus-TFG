@@ -64,31 +64,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["registrarse"])) {
             <h2>Registrarse</h2>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="formulario">
                 <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre" placeholder="Su nombre" required>
+                <input type="text" name="nombre" placeholder="Su nombre" required>
                 <br>
 
                 <label for="apellido">Apellidos</label>
-                <input type="text" name="apellido" id="apellido" placeholder="Sus apellidos" required>
+                <input type="text" name="apellido" placeholder="Sus apellidos" required>
                 <br>
 
                 <label for="direccion">Dirección</label>
-                <input type="text" name="direccion" id="direccion" placeholder="Calle Alcalá, 123" required>
+                <input type="text" name="direccion" placeholder="Calle Alcalá, 123" required>
                 <br>
 
                 <label for="telefono">Teléfono</label>
-                <input type="tel" name="telefono" id="telefono" placeholder="123 45 67 89" required>
+                <input type="tel" name="telefono" placeholder="123 45 67 89" required>
                 <br>
 
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="email@ejemplo.com" autocomplete="username" required>
+                <input type="email" name="email" placeholder="email@ejemplo.com" autocomplete="username" required>
                 <br>
 
                 <label for="contrasenia_registro">Contraseña</label>
-                <input type="password" name="contrasenia_registro" id="contrasenia_registro" placeholder="**********" required autocomplete="new-password">
+                <input type="password" name="contrasenia_registro" placeholder="**********" required autocomplete="new-password">
                 <br>
 
                 <label for="confirmar_contrasenia">Confirmar contraseña</label>
-                <input type="password" name="confirmar_contrasenia" id="confirmar_contrasenia" placeholder="**********" required autocomplete="new-password">
+                <input type="password" name="confirmar_contrasenia" placeholder="**********" required autocomplete="new-password">
                 <br>
 
                 <input type="submit" name="registrarse" value="Registrarse" class="formulario_submit">

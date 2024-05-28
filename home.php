@@ -36,19 +36,20 @@ include_once 'classes/cliente.php';
         <!-- Carrusel -->
         <?php include 'components/carrusel.php'; ?>
 
+        <!-- Publicidad -->
         <div class="publicidad">
             <p>Alta calidad y estilo único. ¡Encuentra la tuya y destaca!</p>
         </div>
 
         <div class="contenedor-central">
-            <!-- Productos -->
+            <!-- Contenedor de Productos -->
             <div class="productos row">
                 <?php
                 try {
                     $productos = Producto::select();
                     if (!empty($productos)) {
                         foreach ($productos as $producto) {
-                            echo '<div class="col-6 col-md-4 col-lg-3 mb-4">';
+                            echo '<div class="col-6 col-md-4 col-lg-3 mb-4">'; // Css para el contenedor
                             echo '<div class="card">';
                             echo '<img src="' . $producto->getImagen() . '" class="card-img-top" alt="' . $producto->getNombre() . '">';
                             echo '<div class="card-body">';

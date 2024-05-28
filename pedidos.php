@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar_pedido'])) {
     $idPedidoEliminar = trim($_POST['id_pedido']);
     Pedido::delete($idPedidoEliminar, $id_cliente);
 }
-
 // Obtener la lista de pedidos por id de cliente utilizando la función select de la clase Pedido
 $pedidos = Pedido::select($id_cliente);
 ?>
@@ -34,15 +33,14 @@ $pedidos = Pedido::select($id_cliente);
 
     <!-- Menu -->
     <?php include 'components/menu.php'; ?>
+    <!-- Publicidad -->
     <div class="publicidad">
         <p>Alta calidad y estilo único.</p>
     </div>
 
     <div class="contenedor-central">
-        <div class="row">
-        </div>
-
-        <div class="col-12 col-md-8 mx-auto">
+        <!-- contenedor de pedidos -->
+        <div class="col-12 col-md-8 mx-auto"> <!-- Css para el contenedor -->
             <div class="pedidos">
                 <h2>Mis pedidos</h2>
 
@@ -59,7 +57,6 @@ $pedidos = Pedido::select($id_cliente);
                                     <th class="table-th">Talla</th>
                                     <th class="table-th">Cantidad</th>
                                     <th class="table-th">Estado</th>
-                                    <!-- <th>Historial</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,16 +79,13 @@ $pedidos = Pedido::select($id_cliente);
                     <p class="mensaje-producto">No hay pedidos para mostrar.</p>
                 <?php } ?>
 
-                <div class="row">
-                    <div class="col-12 col-md-8 mx-auto">
-                        <div class="publicidad-dos">
-                            <?php
-                            // Enlace para volver a home
-                            echo '<a href="home.php">Seguir Comprando</a>';
-                            echo '<br>';
-                            ?>
-                        </div>
-                    </div>
+                <!-- Enlace para volver a home -->
+                <div class="publicidad-dos">
+                    <?php
+                    // Enlace para volver a home
+                    echo '<a href="home.php">Seguir Comprando</a>';
+                    echo '<br>';
+                    ?>
                 </div>
             </div>
 
@@ -100,10 +94,6 @@ $pedidos = Pedido::select($id_cliente);
     <!-- Footer -->
     <?php include 'components/footer.php'; ?>
 
-
 </body>
-
-
-
 
 </html>

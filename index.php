@@ -22,13 +22,8 @@ include_once 'classes/cliente.php';
 </head>
 
 <body>
+  <!-- Enlace al menu -->
   <?php include 'components/menu.php'; ?>
-
-  <script>
-    $('.carousel').carousel({
-      interval: 2000
-    })
-  </script>
 
   <?php include 'components/carrusel.php'; ?>
   <div class="publicidad">
@@ -36,13 +31,13 @@ include_once 'classes/cliente.php';
   </div>
 
   <div class="contenedor-central">
-
+    <!-- Contenedor de productos -->
     <div class="productos row">
       <?php
       $productos = Producto::select();
       if (!empty($productos)) {
         foreach ($productos as $producto) {
-          echo '<div class="col-6 col-md-4 col-lg-3 mb-4">';
+          echo '<div class="col-6 col-md-4 col-lg-3 mb-4">'; // Css para el contenedor
           echo '<div class="card">';
           echo '<img src="' . $producto->getImagen() . '" class="card-img-top" alt="' . $producto->getNombre() . '">';
           echo '<div class="card-body">';
@@ -58,7 +53,6 @@ include_once 'classes/cliente.php';
       }
       ?>
     </div>
-
 
     <!-- Modal de inicio de sesión -->
     <div class="modal fade" id="sesionModal" tabindex="-1" role="dialog" aria-labelledby="sesionModalLabel" aria-hidden="true">
@@ -89,13 +83,19 @@ include_once 'classes/cliente.php';
           $("#sesionModal").modal('hide');
         });
       });
+
+      $('.carousel').carousel({
+        interval: 1000
+      });
     </script>
 
   </div>
 
-<div class="publicidad-dos">
+  <!-- Contenedor de enlace al login.php -->
+
+  <div class="publicidad-dos">
     <a class="visitanos" href="login.php">Visita nuestra Web</a>
-</div>
+  </div>
 
   <!-- Footer -->
   <?php include 'components/footer.php'; ?>
