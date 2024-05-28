@@ -22,10 +22,15 @@ class Color
     {
         return $this->nombre_color;
     }
+    
+    public function getCheckedColor()
+    {
+        return $this->getIdColor() == '4';
+    }
 
     public function getBackgroundColor()
     {
-        switch ($this->id_color) {
+        switch ($this->getIdColor()) {
             case '1':
                 return 'red';
             case '2':

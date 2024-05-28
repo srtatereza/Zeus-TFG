@@ -32,9 +32,10 @@ a {
     font-size: 2rem;
     font-family: var(--fuentePrincipal);
 }
+
 p {
     font-size: 2rem;
-    font-family: var(--fuentePrincipal);  
+    font-family: var(--fuentePrincipal);
 }
 
 img {
@@ -57,7 +58,7 @@ h3 {
     font-size: 3rem;
 }
 
-h1{
+h1 {
     font-size: 3rem;
 }
 
@@ -338,6 +339,7 @@ footer p {
     font-size: 2rem;
     height: 0 auto;
 }
+
 .contenedor-login h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
@@ -357,7 +359,9 @@ label {
 
 /* Estilos para los input */
 input[type="email"],
+input[type="tel"],
 input[type="password"],
+input[type="text"],
 input[type="submit"] {
     width: 100%;
     padding: 0.5rem;
@@ -387,9 +391,11 @@ input[type="submit"]:hover {
     display: flex;
     margin: 5px;
 }
-.mensaje{
+
+.mensaje {
     font-size: 1.5rem;
 }
+
 .card-text-precio {
     font-size: 1.6rem;
     font-weight: 500;
@@ -397,9 +403,11 @@ input[type="submit"]:hover {
     border-radius: 0.5rem;
     padding: 3px;
 }
-.form-control{
+
+.form-control {
     text-align: center;
 }
+
 .label_home {
     background-color: transparent;
     color: var(--negro);
@@ -426,27 +434,29 @@ input[type="submit"]:hover {
     border: 2px solid green;
 }
 
-button.btn.btn-danger, 
-button.btn.btn-warning, 
+button.btn.btn-danger,
+button.btn.btn-warning,
 button.btn.btn-success {
     font-size: 1.5rem;
     margin-top: 10px;
     margin-left: 20px;
 }
 
-.contenedor-inferior-carrito{
+.contenedor-inferior-carrito {
     display: flex;
     justify-content: center;
-    margin-bottom:30px;
+    margin-bottom: 30px;
     margin-top: 10px;
 }
+
 .productos-carrito a {
     text-decoration: none;
     font-size: 2.5rem;
 }
-.mensaje-producto{
-text-align: center;
-color:red;
+
+.mensaje-producto {
+    text-align: center;
+    color: red;
 }
 
 .table th,
@@ -458,38 +468,55 @@ color:red;
 }
 
 .table-th {
-    background-color: var(--primario) !important; /* Color de fondo para los encabezados */
-    color: var(--blanco) !important; /* Color del texto para los encabezados */
+    background-color: var(--primario) !important;
+    /* Color de fondo para los encabezados */
+    color: var(--blanco) !important;
+    /* Color del texto para los encabezados */
 }
 
 .table-td {
-    background-color: #ecfeff !important ; /* Color de fondo para las celdas */
+    background-color: #ecfeff !important;
+    /* Color de fondo para las celdas */
 }
 
 .publicidad-dos {
     text-align: center;
     margin-top: 20px;
 }
+
+/* contacto */
+
 .container-contacto {
-    margin: 20px;
+    max-width: 120rem;
+    margin: 0 auto;
     text-align: center;
 }
+
 .contacto-p {
-    font-size: 1.5rem; /* Tamaño de fuente más grande para tabletas y ordenadores */
+    font-size: 1.5rem;
+    /* Tamaño de fuente más grande para tabletas y ordenadores */
 }
+
 .img-fluid {
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
 input#usuario.form-control,
 input#contrasenia.form-control,
 input#password1.form-control,
-input#password2.form-control{
+input#password2.form-control {
     margin-left: 2rem;
 }
-input#usuario.form-control{
+
+input#usuario.form-control {
     font-size: 2rem;
     padding: 0.1rem;
+}
+
+/* pedidos-tienda */
+.estado-pedido {
+    margin-bottom: 0.5rem;
 }
 
 /* Estilos para pantallas de ordenador */
@@ -527,36 +554,42 @@ input#usuario.form-control{
         margin-right: 20px;
     }
 
-/* LOGIN */
-.contenedor-central-login {
-    font-size: 3rem;
-}
-.contenedor-login {
-    margin: 0 auto;
-    height: auto;
-}
+    /* LOGIN */
+    .contenedor-central-login {
+        font-size: 3rem;
+    }
 
-.publicidad p {
-    padding: 30px;
-    font-size: 2.5rem;
-}
-button.btn.btn-danger, 
-button.btn.btn-warning, 
-button.btn.btn-success {
-    font-size: 2rem;
-    margin-top: 10px;
-    margin-left: 20px;
-}
+    .contenedor-login {
+        margin: 0 auto;
+        height: auto;
+    }
 
-.mensaje {
-    font-size: 2rem;
-}
-.table-th, .table-td {
-    font-size: 1.5rem !important;
-}
-.contacto-p {
-    font-size: 1.8rem; /* Tamaño de fuente más grande para tabletas y ordenadores */
+    .publicidad p {
+        padding: 30px;
+        font-size: 2.5rem;
+    }
 
-}
+    button.btn.btn-danger,
+    button.btn.btn-warning,
+    button.btn.btn-success {
+        font-size: 2rem;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+
+    .mensaje {
+        font-size: 2rem;
+    }
+
+    .table-th,
+    .table-td {
+        font-size: 1.5rem !important;
+    }
+
+    .contacto-p {
+        font-size: 1.8rem;
+        /* Tamaño de fuente más grande para tabletas y ordenadores */
+
+    }
 
 }

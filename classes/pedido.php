@@ -142,7 +142,24 @@ class Pedido
 public static function selectAllPedidos() {
     try {
         $conexion = camisetasDB::connectDB();
-        $sql = "SELECT * FROM pedidos";
+        $sql = "SELECT 
+            p.id_pedido AS id_pedido,
+            p.fecha AS fecha,
+            c.nombre as nombre_cliente,
+            c.apellido as apellido_cliente,
+            pr.nombre AS nombre_producto,
+            co.nombre_color AS color,
+            ta.numero_talla AS talla,
+            p.cantidad_producto AS cantidad_producto,
+            p.estado_pedido AS estado_pedido
+        FROM pedidos p
+        JOIN clientes c ON p.id_cliente = c.id_cliente
+        JOIN producto_color_talla pct ON p.id_producto = pct.id_producto AND p.id_color = pct.id_color AND p.id_talla = pct.id_talla
+        JOIN productos pr ON pct.id_producto = pr.id_producto
+        JOIN colores co ON pct.id_color = co.id_color
+        JOIN tallas ta ON pct.id_talla = ta.id_talla
+        ORDER BY p.fecha;
+    ";
         $stmt = $conexion->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
