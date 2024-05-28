@@ -16,34 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `administrador`
---
-
-DROP TABLE IF EXISTS `administrador`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `administrador` (
-  `id_administrador` int NOT NULL,
-  `usuario` varchar(45) NOT NULL,
-  `contrasenia` varchar(60) NOT NULL,
-  `id_cliente` int NOT NULL,
-  PRIMARY KEY (`id_administrador`),
-  UNIQUE KEY `usuario_UNIQUE` (`usuario`),
-  KEY `id_cliente_idx` (`id_cliente`),
-  CONSTRAINT `id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `administrador`
---
-
-LOCK TABLES `administrador` WRITE;
-/*!40000 ALTER TABLE `administrador` DISABLE KEYS */;
-/*!40000 ALTER TABLE `administrador` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `administradores`
 --
 
@@ -95,7 +67,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'tereza','xxxx','xxxx','123456789','tere@gmail','12345'),(2,'xxx','xxxx','xxxx','123456789','x@gmail.com','12345'),(3,'prueba','prueba','prueba','123456789','prueba@gmail.com','$2y$10$x9B5s5f3sjBf7o04BTbzqeaoco2JcEwzs506q2az5E3r1Vk6BF7i.');
+INSERT INTO `clientes` VALUES (3,'prueba','prueba','prueba','123456789','prueba@gmail.com','$2y$10$x9B5s5f3sjBf7o04BTbzqeaoco2JcEwzs506q2az5E3r1Vk6BF7i.');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +119,7 @@ CREATE TABLE `pedidos` (
   KEY `fk_id_color` (`id_color`),
   CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`),
   CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +128,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (1,'2023-11-08',1,2,1,'enviado',1,1);
+INSERT INTO `pedidos` VALUES (4,'2024-05-28',3,2,3,'en preparación',1,1);
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-26 10:12:44
+-- Dump completed on 2024-05-28 19:38:54

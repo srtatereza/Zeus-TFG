@@ -4,6 +4,7 @@
 
 1. Docker
 2. PHP
+3. MySQLWorkbench (Opcional)
 
 ## Como ejecutar
 
@@ -20,5 +21,8 @@
 
 ### Exportar base de datos
 
-1. Abrir la terminal y borrar el archivo antiguo: `rm sql/zeus_tfg.sql`
-2. Exportar la base de datos con: `docker-compose exec -T mysql mysqldump -u root zeus_tfg > sql/zeus_tfg.sql`
+1. Abrir la terminal y borrar el archivo antiguo ubicado en la carpeta sql: `rm sql/zeus_tfg.sql`
+2. Exportar la base de datos actualizada a la carpeta sql con: `docker-compose exec -T mysql mysqldump -u root zeus_tfg > sql/zeus_tfg.sql`
+
+> Nota:
+> Se debe tener en cuenta que en este proyecto mysql esta expuesto en el puerto 3307.
