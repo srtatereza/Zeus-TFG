@@ -60,11 +60,11 @@ $pedidos = Pedido::selectAllPedidos();
                                 <tr>
                                     <th>ID Pedido</th>
                                     <th>Fecha</th>
-                                    <th>ID Cliente</th>
-                                    <th>ID Producto</th>
+                                    <th>Cliente</th>
+                                    <th>Producto</th>
                                     <th>Cantidad</th>
-                                    <th>ID Color</th>
-                                    <th>ID Talla</th>
+                                    <th>Color</th>
+                                    <th>Talla</th>
                                     <th>Estado</th>
                                     <th>Acción</th>
                                 </tr>
@@ -74,11 +74,11 @@ $pedidos = Pedido::selectAllPedidos();
                                     <tr>
                                         <td><?php echo $pedido['id_pedido']; ?></td>
                                         <td><?php echo $pedido['fecha']; ?></td>
-                                        <td><?php echo $pedido['id_cliente']; ?></td>
-                                        <td><?php echo $pedido['id_producto']; ?></td>
+                                        <td><?php echo $pedido['nombre_cliente'] . " " . $pedido['apellido_cliente']; ?></td>
+                                        <td><?php echo $pedido['nombre_producto']; ?></td>
                                         <td><?php echo $pedido['cantidad_producto']; ?></td>
-                                        <td><?php echo $pedido['id_color']; ?></td>
-                                        <td><?php echo $pedido['id_talla']; ?></td>
+                                        <td><?php echo $pedido['color']; ?></td>
+                                        <td><?php echo $pedido['talla']; ?></td>
                                         <td>
                                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                                 <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">

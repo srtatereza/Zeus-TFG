@@ -105,7 +105,6 @@ include_once 'include/zeus_tfg.php';
                         // Vaciar el carrito después de la compra
                         $_SESSION['carrito'] = [];
 
-
                         echo '<p class="card-text">Compra realizada con éxito.</p>';
                         echo '<a class="mensaje-producto" href="pedidos.php">Ver la factura de mi pedido</a>';
                         echo '<br>';
