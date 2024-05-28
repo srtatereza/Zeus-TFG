@@ -9,8 +9,8 @@
 1. Abrir terminal y lanzar para lanzar el docker: `docker-compose up -d`
 2. Lanzar para recrear la base de datos (si no se ha creado ya, o se desea actualizar las tablas): 
 `docker-compose exec -T mysql mysql -u root zeus_tfg < sql/zeus_tfg.sql`
-3. Para restaurar la conexion con docket: `docker restart docker-desktop`
-
+3. Para restaurar la conexion con docker: `docker restart docker-desktop`
+ 
 ### Web
 1. Lanzar en la terminal: `php -S localhost:8000`
 
