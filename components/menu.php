@@ -1,6 +1,7 @@
 <?php
 session_start(); // Iniciar la sesión si no está iniciada
 $usuario_iniciado = isset($_SESSION['email']); // Verificar si el usuario ha iniciado sesión
+$admin_iniciado = isset($_SESSION['id_administrador']); // Verificar si el admin ha iniciado sesión
 
 // Obtener el nombre del archivo actual
 $pagina_actual = basename($_SERVER['PHP_SELF']);
@@ -40,7 +41,7 @@ $pagina_actual = basename($_SERVER['PHP_SELF']);
                 <?php endif; ?>
             </ul>
             <ul class="navbar-nav mr-auto">
-                <?php if ($usuario_iniciado) : ?>
+                <?php if ($usuario_iniciado || $admin_iniciado) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                     </li>

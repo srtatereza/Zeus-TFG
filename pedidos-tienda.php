@@ -15,41 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar_pedido'])) {
     Pedido::delete($idPedidoEliminar, $id_cliente);
 }
 
-// Obtener la lista de pedidos por id de cliente utilizando la función select de la clase Pedido
-$pedidos = Pedido::select($id_cliente);
-?>
-
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedidos</title>
-    <!-- Enlace al archivo CSS externo -->
-    <?php include 'components/enlace.php'; ?>
-</head>
-
-<body>
-
-    <!-- Menu -->
-    <?php include 'components/menu.php'; ?>
-    <div class="publicidad">
-                    <p>Alta calidad y estilo único.</p>
-                </div>
-
-    <div class="contenedor-central">
-
-
-    <?php
-session_start();
-include 'components/configuracion.php';
-include_once 'classes/pedido.php';
-include_once 'include/zeus_tfg.php';
-
-// Obtener todos los pedidos de la base de datos
-$pedidos = Pedido::selectAllPedidos();
-
 // Verificar si se ha enviado el formulario de actualización del estado del pedido
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['actualizar_estado_pedido'])) {
     $id_pedido = $_POST['id_pedido'];
@@ -60,6 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['actualizar_estado_pedi
     header("Location: pedidos-tienda.php");
     exit();
 }
+
+// Obtener la lista de pedidos por id de cliente utilizando la función select de la clase Pedido
+$pedidos = Pedido::selectAllPedidos();
 ?>
 
 <!DOCTYPE html>
