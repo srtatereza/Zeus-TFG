@@ -24,12 +24,11 @@ include_once 'include/zeus_tfg.php';
 
     <!-- Menu -->
     <?php include 'components/menu.php'; ?>
-
-    <div class="contenedor-central">
-        <div class="publicidad">
+    <div class="publicidad">
             <p>Alta calidad y estilo único. ¡Encuentra la tuya y destaca!</p>
         </div>
 
+    <div class="contenedor-central">
         <?php
 
         // Agregar un producto al carrito

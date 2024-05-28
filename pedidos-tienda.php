@@ -66,7 +66,6 @@ $pedidos = Pedido::selectAllPedidos();
                                     <th>Color</th>
                                     <th>Talla</th>
                                     <th>Estado</th>
-                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,7 +81,7 @@ $pedidos = Pedido::selectAllPedidos();
                                         <td>
                                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                                 <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
-                                                <select name="estado_pedido" class="form-control">
+                                                <select name="estado_pedido" class="form-control estado-pedido">
                                                     <option value="En preparación" <?php if ($pedido['estado_pedido'] == "En preparación") echo 'selected'; ?>>En preparación</option>
                                                     <option value="En Reparto" <?php if ($pedido['estado_pedido'] == "En Reparto") echo 'selected'; ?>>En Reparto</option>
                                                     <option value="Entregado" <?php if ($pedido['estado_pedido'] == "Entregado") echo 'selected'; ?>>Entregado</option>
