@@ -3,6 +3,8 @@ session_start();
 include 'components/configuracion.php';
 include_once 'include/zeus_tfg.php';
 include_once 'classes/administrador.php';
+
+$adminIniciado = $_SESSION['id_administrador'];
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +22,11 @@ include_once 'classes/administrador.php';
     <!-- Menú -->
     <?php include 'components/menu.php'; ?>
     <div class="publicidad">
-        <p>Bienvenido, Administrador</p>
+        <?php if ($adminIniciado) : ?>
+            <p>Puedes cambiar tu contraseña de acceso</p>
+        <?php else : ?>
+            <p>Login de administración</p>
+        <?php endif; ?>
     </div>
 
     <div class="contenedor-central-login">

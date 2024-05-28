@@ -46,7 +46,7 @@ $pedidos = Pedido::selectAllPedidos();
     <?php include 'components/menu.php'; ?>
 
     <div class="publicidad">
-        <p>Alta calidad y estilo único.</p>
+        <p>Gestiona el estado de los pedidos</p>
     </div>
 
     <div class="contenedor-central">
