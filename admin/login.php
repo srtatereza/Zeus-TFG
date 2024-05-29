@@ -55,6 +55,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_admin"])) {
   </div>
 
   <div class="contenedor-central-login">
+    <?php
+    // Mostrar un Mensaje en caso de Error.
+    if (isset($mensajeError)) {
+      echo "<p>$mensajeError</p>";
+    }
+    ?>
     <div class="contenedor-login">
       <!-- Formulario de inicio de sesión -->
       <h2>Iniciar sesión</h2>
