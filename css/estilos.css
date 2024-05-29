@@ -63,7 +63,7 @@ img {
     /* Añadir overflow hidden si necesario */
     padding-bottom: 2rem;
     /* Añadir padding bottom si el contenido del footer necesita espacio */
-    min-height: 50vh;
+    min-height: 70vh;
 }
 
 h1,
@@ -361,7 +361,7 @@ footer p {
     margin: 0 auto;
     /* Espacio superior */
     font-size: 2rem;
-    height: 0 auto;
+    height: 100%;
 }
 .contenedor-login-registro {
     background-color: #343a40;
@@ -373,7 +373,7 @@ footer p {
     margin: 0 auto;
     /* Espacio superior */
     font-size: 1.5rem;
-    height: 0 auto;
+    height: 100%;
 }
 
 .contenedor-login, .contenedor-login-registro h2 {
@@ -578,6 +578,20 @@ select.form-control.estado-pedido {
         font-size: 2rem;
         height: 100%;
     }
+    .contenedor-login {
+        height: 100%;   
+    }
+    .contenedor-central {
+        overflow: hidden;
+        /* Añadir overflow hidden si necesario */
+        padding-bottom: 2rem;
+        /* Añadir padding bottom si el contenido del footer necesita espacio */
+        height: 100%;
+    }
+
+    .contenedor-central-login{
+        min-height: 70vh;
+    }
 
     .footer-style {
         padding-bottom: 20px;
@@ -587,14 +601,6 @@ select.form-control.estado-pedido {
     .productos-carrito h2 {
         font-size: 3rem !important;
         margin-top: 10px !important;
-    }
-
-    .contenedor-central {
-        overflow: hidden;
-        /* Añadir overflow hidden si necesario */
-        padding-bottom: 2rem;
-        /* Añadir padding bottom si el contenido del footer necesita espacio */
-        height: 60%;
     }
 
     .table th,
@@ -620,6 +626,9 @@ select.form-control.estado-pedido {
         /* Espacio superior */
         font-size: 2.2rem;
         height: 100%;
+    }
+    .contenedor-login {
+        height: 100%;   
     }
     select.form-control.estado-pedido {
         font-size: 1.5rem !important;
@@ -680,11 +689,6 @@ select.form-control.estado-pedido {
     /* LOGIN */
     .contenedor-central-login {
         font-size: 3rem;
-    }
-
-    .contenedor-login {
-        margin: 0 auto;
-        height: auto;
     }
 
     .publicidad p {
