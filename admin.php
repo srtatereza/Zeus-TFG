@@ -73,8 +73,6 @@ $adminIniciado = $_SESSION['id_administrador'];
                     }
                     ?>
                 </div>
-                <!-- Enlace para cerrar la sesión-->
-                <a href="logout.php">Cerrar sesión</a>
 
             <?php
         } else {
