@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["registrarse"])) {
             echo "<p>$mensajeRegistro</p>";
         }
         ?>
-        <div class="contenedor-login">
+        <div class="contenedor-login-registro">
             <!-- Formulario de Registro -->
             <h2>Registrarse</h2>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="formulario">

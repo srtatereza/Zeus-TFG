@@ -358,8 +358,20 @@ footer p {
     font-size: 2rem;
     height: 0 auto;
 }
+.contenedor-login-registro {
+    background-color: #343a40;
+    color: var(--blanco);
+    /* Gris oscuro */
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+    /* Espacio superior */
+    font-size: 1.5rem;
+    height: 0 auto;
+}
 
-.contenedor-login h2 {
+.contenedor-login, .contenedor-login-registro h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
@@ -555,6 +567,12 @@ select.form-control.estado-pedido {
 
 @media (min-width: 768px) and (max-width: 991px) {
 
+    .contenedor-login-registro {
+        /* Espacio superior */
+        font-size: 2rem;
+        height: 100%;
+    }
+
     .footer-style {
         padding-bottom: 20px;
         /* Ajustar padding inferior del footer */
@@ -571,10 +589,6 @@ select.form-control.estado-pedido {
         padding-bottom: 2rem;
         /* Añadir padding bottom si el contenido del footer necesita espacio */
         height: 60%;
-    }
-
-    .contenedor-central-login {
-        height: 50%;
     }
 
     .table th,
@@ -595,6 +609,12 @@ select.form-control.estado-pedido {
 
 /* Estilos para pantallas de ordenador */
 @media (min-width: 992px) {
+
+    .contenedor-login-registro {
+        /* Espacio superior */
+        font-size: 2.2rem;
+        height: 100%;
+    }
     select.form-control.estado-pedido {
         font-size: 1.5rem !important;
     }
