@@ -63,7 +63,7 @@ $pedidos = Pedido::selectAllPedidos();
                                     <th class="table-th">Fecha</th>
                                     <th class="table-th">Cliente</th>
                                     <th class="table-th">Producto</th>
-                                    <th class="table-th">Cantidad</th>
+                                    <th class="table-th">Cant</th>
                                     <th class="table-th">Color</th>
                                     <th class="table-th">Talla</th>
                                     <th class="table-th">Estado</th>
@@ -74,7 +74,7 @@ $pedidos = Pedido::selectAllPedidos();
                                     <tr>
                                         <td class="table-td"><?php echo $pedido['id_pedido']; ?></td>
                                         <td class="table-td"><?php echo $pedido['fecha']; ?></td>
-                                        <td class="table-td"><?php echo $pedido['nombre_cliente'] . " " . $pedido['apellido_cliente']; ?></td>
+                                        <td class="table-td"><?php echo $pedido['nombre_cliente']; ?></td>
                                         <td class="table-td"><?php echo $pedido['nombre_producto']; ?></td>
                                         <td class="table-td"><?php echo $pedido['cantidad_producto']; ?></td>
                                         <td class="table-td"><?php echo $pedido['color']; ?></td>
@@ -88,7 +88,7 @@ $pedidos = Pedido::selectAllPedidos();
                                                     <option value="Entregado" <?php if ($pedido['estado_pedido'] == "Entregado") echo 'selected'; ?>>Entregado</option>
                                                     <option value="Cancelado" <?php if ($pedido['estado_pedido'] == "Cancelado") echo 'selected'; ?>>Cancelado</option>
                                                 </select>
-                                                <button type="submit" name="actualizar_estado_pedido" class="btn btn-primary">Actualizar</button>
+                                                <button type="submit" name="actualizar_estado_pedido" class="btn btn-primary actualizar">Actualizar</button>
                                             </form>
                                         </td>
                                     </tr>
