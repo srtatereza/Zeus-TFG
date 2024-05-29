@@ -10,7 +10,7 @@ $pagina_actual = basename($_SERVER['PHP_SELF']);
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EBEDEF;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img id="logo-img" src="img/logo-oficial.png" alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
+            <img id="logo-img" src="/img/logo-oficial.png" alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
         </a>
         <span class="navbar-brand" style="font-size: 3rem; ">ZEUS</span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -34,10 +34,10 @@ $pagina_actual = basename($_SERVER['PHP_SELF']);
                     </li>
                 <?php elseif ($admin_iniciado) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pedidos-tienda.php">Gestionar pedidos</a>
+                        <a class="nav-link" href="/admin/pedidos-tienda.php">Gestionar pedidos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin.php">Cambiar contraseña</a>
+                        <a class="nav-link" href="/admin/cambio.php">Cambiar contraseña</a>
                     </li>
                 <?php else : ?>
                     <?php if ($pagina_actual === 'index.php') : ?>
