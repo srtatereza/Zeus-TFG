@@ -6,7 +6,7 @@
     --blanco: #FFF;
     --negro: #000;
 
-    --fuentePrincipal: 'Staatliches', cursive;
+    --fuentePrincipal: 'Staatliches';
 }
 
 html {
@@ -541,6 +541,8 @@ button.btn.btn-primary.actualizar {
 .contacto-p {
     font-size: 1.5rem;
     /* Tamaño de fuente más grande para tabletas y ordenadores */
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 
 .img-fluid {
@@ -616,6 +618,10 @@ select.form-control.estado-pedido {
 
     select.form-control.estado-pedido {
         font-size: 1.3rem !important;
+    }
+    .contacto-p {
+        font-size: 1.8rem;
+        /* Tamaño de fuente más grande para tabletas y ordenadores */
     }
 }
 
@@ -714,9 +720,8 @@ select.form-control.estado-pedido {
     }
 
     .contacto-p {
-        font-size: 1.8rem;
+        font-size: 2rem;
         /* Tamaño de fuente más grande para tabletas y ordenadores */
-
     }
 
 }
