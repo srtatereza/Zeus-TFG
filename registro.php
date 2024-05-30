@@ -1,6 +1,7 @@
 <?PHP
 session_start();
 include_once 'include/zeus_tfg.php';
+include_once 'components/configuracion.php';
 include_once 'classes/cliente.php';
 
 // Comprueba si se ha enviado el formulario de registro

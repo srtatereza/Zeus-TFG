@@ -1,9 +1,8 @@
 <?php
 session_start();
-include 'components/configuracion.php';
 include_once 'include/zeus_tfg.php';
+include_once 'components/configuracion.php';
 include_once 'classes/cliente.php';
-
 
 // Verifica si se envió el formulario de inicio de sesión
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logarse"])) {

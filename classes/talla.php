@@ -38,6 +38,8 @@ class Talla
             $stmt->execute();
             $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $tallas = [];
+
+            // Recorremos los resultados y creamos objetos Talla
             foreach ($resultados as $row) {
                 $id_talla = $row['id_talla'];
                 $numero_talla = $row['numero_talla'];

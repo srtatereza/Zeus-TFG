@@ -1,13 +1,12 @@
 <?php
 session_start(); // Iniciar la sesión si no está iniciada
+include_once 'include/zeus_tfg.php';
+include_once 'components/configuracion.php';
+include_once 'classes/producto.php';
+include_once 'classes/cliente.php';
 
 // Verificar si el usuario ha iniciado sesión
 $usuario_iniciado = isset($_SESSION['email']);
-
-include 'components/configuracion.php';
-include_once 'include/zeus_tfg.php';
-include_once 'classes/producto.php';
-include_once 'classes/cliente.php';
 ?>
 
 <!DOCTYPE html>

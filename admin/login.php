@@ -1,7 +1,7 @@
 <?php
 session_start();
-include '../components/configuracion.php';
 include_once '../include/zeus_tfg.php';
+include_once '../components/configuracion.php';
 include_once '../classes/administrador.php';
 
 $idAdmin = $_SESSION['id_administrador'];

@@ -1,8 +1,8 @@
 <?php
 session_start();
 include_once '../include/zeus_tfg.php';
-include_once 'classes/color.php';
-include_once 'classes/talla.php';
+include_once 'color.php';
+include_once 'talla.php';
 
 /**
  * Modelo de productos
@@ -133,6 +133,8 @@ class Producto
     {
         $conexion = CamisetasDB::connectDB();
         $sql = "";
+
+        // Obtener el detalle de la talla o el color
         if ($tipo === "talla") {
             $sql = "SELECT id_talla, numero_talla FROM tallas WHERE numero_talla = ?";
         } elseif ($tipo === "color") {

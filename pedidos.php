@@ -1,10 +1,10 @@
 <?php
 session_start();
-include 'components/configuracion.php';
+include_once 'include/zeus_tfg.php';
+include_once 'components/configuracion.php';
 include_once 'classes/producto.php';
 include_once 'classes/cliente.php';
 include_once 'classes/pedido.php';
-include_once 'include/zeus_tfg.php';
 
 $id_cliente = $_SESSION['id_cliente'];
 
