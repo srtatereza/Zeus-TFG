@@ -6,6 +6,7 @@ include_once '../classes/producto.php';
 include_once '../classes/cliente.php';
 include_once '../classes/pedido.php';
 
+// Verificar si se ha iniciado sesión, sino redirigir a la página de inicio de sesión
 if (!isset($_SESSION['id_administrador'])) {
     header("Location: /admin/login.php");
   }

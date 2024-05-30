@@ -4,7 +4,7 @@ include_once 'include/zeus_tfg.php';
 include_once 'components/configuracion.php';
 include_once 'classes/cliente.php';
 
-// Verificar si se ha iniciado sesión, sino redirigir a la página de inicio de sesión
+// Verificar si se ha iniciado sesión, sino redirigir a la home de la tienda (porque ya hay una sesión iniciada)
 if (isset($_SESSION['id_cliente'])) {
     header("Location: /home.php");
 }
@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logarse"])) {
         // Destruimos la sesión de administrador si la hay para evitar conflictos
         $_SESSION['id_administrador'] = null;
 
+        // Redirigimos a la página de home
         header("Location: home.php");
         exit();
     } else {

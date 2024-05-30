@@ -6,6 +6,7 @@ include_once '../classes/administrador.php';
 
 $idAdmin = $_SESSION['id_administrador'];
 
+// Verificar si se ha iniciado sesión, sino redirigir a la página de inicio de sesión
 if (!isset($idAdmin)) {
   header("Location: /admin/login.php");
 }

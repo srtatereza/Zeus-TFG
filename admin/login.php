@@ -6,6 +6,7 @@ include_once '../classes/administrador.php';
 
 $idAdmin = $_SESSION['id_administrador'];
 
+// Verificar si se ha iniciado sesión, en cuyo caso, redirigir a la página de pedidos (porque ya hay una sesión iniciada)
 if ($idAdmin) {
   header("Location: /admin/pedidos-tienda.php");
 }
@@ -26,10 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_admin"])) {
       $_SESSION['id_administrador'] = $adminEncontrado['id_administrador'];
       $_SESSION['administrador'] = $adminEncontrado['usuario'];
 
-      // Destruimos la sesión de administrador si la hay para evitar conflictos
+      // Destruimos la sesión de cliente si la hay para evitar conflictos
       $_SESSION['id_cliente'] = null;
       $_SESSION['email'] = null;
 
+      // Redirigimos a la página de pedidos de la tienda
       header("Location: pedidos-tienda.php");
     } else {
       $mensajeError = "Usuario o contraseña incorrectos.";
