@@ -29,8 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_admin"])) {
     } else {
       $mensajeError = "Usuario o contraseña incorrectos.";
     }
-  } catch (Exception $e) {
-    error_log("Error en la base de datos: " . $e->getMessage());
+  } catch (PDOException $e) {
     $mensajeError = "Error en el login, por favor, revisa los logs.";
   }
 }

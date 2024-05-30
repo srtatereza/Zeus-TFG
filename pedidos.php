@@ -12,7 +12,11 @@ $id_cliente = $_SESSION['id_cliente'];
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar_pedido'])) {
     // Eliminar el pedido por id de pedido y id de cliente, utilizando la función delete de la clase Pedido
     $idPedidoEliminar = trim($_POST['id_pedido']);
-    Pedido::delete($idPedidoEliminar, $id_cliente);
+    try {
+        Pedido::delete($idPedidoEliminar, $id_cliente);
+    } catch (PDOException $e) {
+        echo 'Error al eliminar el pedido, intente de nuevo o contacte con el administrador. ' . $e->getMessage();
+    }
 }
 // Obtener la lista de pedidos por id de cliente utilizando la función select de la clase Pedido
 $pedidos = Pedido::select($id_cliente);

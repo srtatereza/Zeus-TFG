@@ -2,25 +2,36 @@
 session_start();
 include_once '../include/zeus_tfg.php';
 
-class Talla {
+/**
+ * Modelo de tallas
+ */
+class Talla
+{
     private $id_talla;
     private $numero_talla;
 
-    function __construct($id_talla, $numero_talla) {
+    function __construct($id_talla, $numero_talla)
+    {
         $this->id_talla = $id_talla;
         $this->numero_talla = $numero_talla;
     }
 
-    public function getIdTalla() {
+    public function getIdTalla()
+    {
         return $this->id_talla;
     }
 
-    public function getNumeroTalla() {
+    public function getNumeroTalla()
+    {
         return $this->numero_talla;
     }
 
-    public static function select() {
-        $conexion = camisetasDB::connectDB();
+    /**
+     * Obtener todas las tallas
+     */
+    public static function select()
+    {
+        $conexion = CamisetasDB::connectDB();
         $sql = "SELECT id_talla, numero_talla FROM tallas";
         try {
             $stmt = $conexion->prepare($sql);
@@ -38,7 +49,8 @@ class Talla {
             }
             return $tallas;
         } catch (PDOException $e) {
-            echo "Error al obtener el detalle de la talla o el color: " . $e->getMessage();
+            // Retornamos falso en caso de error
+            error_log("Error en la base de datos: " . $e->getMessage());
             return false;
         }
     }

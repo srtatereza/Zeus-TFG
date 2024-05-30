@@ -88,7 +88,6 @@ include_once 'include/zeus_tfg.php';
                     $pedido = new Pedido($fechaCompra, $id_cliente, $id_producto, $cantidad_producto, $id_color, $id_talla, 'en preparación');
                     $pedido->insert();
                 } catch (PDOException $e) {
-                    error_log("Error en la base de datos: " . $e->getMessage());
                     echo "<p>Error al realizar la compra, contacte con el administrador.</p>";
                 }
                 // Vaciar el carrito después de la compra

@@ -2,6 +2,9 @@
 session_start();
 include_once '../include/zeus_tfg.php';
 
+/**
+ * Modelo de clientes
+ */
 class Cliente
 {
     private $id_cliente;
@@ -58,32 +61,37 @@ class Cliente
         return $this->contrasenia;
     }
 
-    // Función para insertar un cliente
+    /**
+     * Función para insertar un cliente nuevo en la base de datos con los datos de este objeto
+     */
     public function insert()
     {
-        $conexion = camisetasDB::connectDB();
+        $conexion = CamisetasDB::connectDB();
         $sql = "INSERT INTO zeus_tfg.clientes (nombre, apellido, direccion, telefono, email, contrasenia) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             $stmt = $conexion->prepare($sql);
             $stmt->execute([$this->nombre, $this->apellido, $this->direccion, $this->telefono, $this->email, $this->contrasenia]);
         } catch (PDOException $e) {
-            // Manejar el error
-            echo "Error en la base de datos: " . $e->getMessage();
+            // Relanzamos la excepcion para manejarla posteriormente
+            error_log("Error en la base de datos: " . $e->getMessage());
+            throw $e;
         }
     }
 
-    // Función para obtener un cliente
+    /**
+     * Función para obtener un cliente por su correo electrónico
+     */
     public function select($email)
     {
-        $conexion = camisetasDB::connectDB();
+        $conexion = CamisetasDB::connectDB();
         $sql = "SELECT * FROM clientes WHERE email = ?";
         try {
             $stmt = $conexion->prepare($sql);
             $stmt->execute([$email]);
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
             // Devuelve falso en caso de error
+            error_log("Error en la base de datos: " . $e->getMessage());
             return false;
         }
     }

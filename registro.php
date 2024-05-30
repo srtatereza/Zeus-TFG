@@ -20,7 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["registrarse"])) {
         // Inserta un cliente utilizando la función insert de la clase cliente
         $almacenarPassword = password_hash($contraseniaRegistro, PASSWORD_BCRYPT);
         $cliente = new Cliente("", $nombre, $apellido, $direccion, $telefono, $email, $almacenarPassword);
-        $cliente->insert();
+        
+        try {
+            $cliente->insert();
+        } catch (PDOException $e) {
+            $mensajeRegistro = "Ha ocurrido un error. Por favor, inténtalo de nuevo o contacta con el administrador.";
+        }
+
         // Mensaje de depuración
         $mensajeRegistro = "Usuario registrado con éxito.";
     }

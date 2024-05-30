@@ -2,6 +2,9 @@
 session_start();
 include_once '../include/zeus_tfg.php';
 
+/**
+ * Modelo de colores
+ */
 class Color
 {
     private $id_color;
@@ -22,12 +25,18 @@ class Color
     {
         return $this->nombre_color;
     }
-    
+
+    /**
+     * Devuelve true si el color es el blanco
+     */
     public function getCheckedColor()
     {
         return $this->getIdColor() == '4';
     }
 
+    /**
+     * Devuelve el color CSS correspondiente
+     */
     public function getBackgroundColor()
     {
         switch ($this->getIdColor()) {
@@ -42,15 +51,21 @@ class Color
         }
     }
 
+    /**
+     * Función para obtener todos los colores
+     * Devuelve el resultado en un array de colores
+     */
     public static function select()
     {
-        $conexion = camisetasDB::connectDB();
+        $conexion = CamisetasDB::connectDB();
         $sql = "SELECT id_color, nombre_color FROM colores";
         try {
             $stmt = $conexion->prepare($sql);
             $stmt->execute();
             $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $colores = [];
+            
+            // Mapeamos el resultado a un array de colores
             foreach ($resultados as $row) {
                 $id_color = $row['id_color'];
                 $nombre_color = $row['nombre_color'];
@@ -62,7 +77,8 @@ class Color
             }
             return $colores;
         } catch (PDOException $e) {
-            echo "Error al obtener el detalle del color: " . $e->getMessage();
+            // Retornamos falso en caso de error
+            error_log("Error en la base de datos: " . $e->getMessage());
             return false;
         }
     }

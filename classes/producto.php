@@ -4,6 +4,9 @@ include_once '../include/zeus_tfg.php';
 include_once 'classes/color.php';
 include_once 'classes/talla.php';
 
+/**
+ * Modelo de productos
+ */
 class Producto
 {
     private $id_producto;
@@ -67,9 +70,12 @@ class Producto
         $this->colores = $colores;
     }
 
+    /**
+     * Función para obtener todos los productos
+     */
     public static function select()
     {
-        $conexion = camisetasDB::connectDB();
+        $conexion = CamisetasDB::connectDB();
         $sql = "
             SELECT p.id_producto, p.nombre, p.precio, p.imagen, c.id_color, c.nombre_color, t.id_talla, t.numero_talla
             FROM productos p
@@ -96,8 +102,9 @@ class Producto
                         $row['imagen']
                     );
                     $productos[$id_producto] = $productoNuevo;
-                } 
+                }
 
+                // Asignar los colores y tallas al producto
                 $id_color = $row['id_color'];
                 $nombre_color = $row['nombre_color'];
                 $colores = $productoNuevo->getColores();
@@ -113,16 +120,18 @@ class Producto
 
             return $productos;
         } catch (PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
+            // Retornamos falso en caso de error
+            error_log("Error en la base de datos: " . $e->getMessage());
             return false;
         }
     }
 
-
-    // Función para obtener el ID y el nombre de la talla o el color
+    /**
+     * Función para obtener el detalle de la talla o el color, a partir de un valor y el tipo de dato
+     */
     public static function obtenerDetalleTallaColor($valor, $tipo)
     {
-        $conexion = camisetasDB::connectDB();
+        $conexion = CamisetasDB::connectDB();
         $sql = "";
         if ($tipo === "talla") {
             $sql = "SELECT id_talla, numero_talla FROM tallas WHERE numero_talla = ?";
@@ -141,4 +150,3 @@ class Producto
         }
     }
 }
-

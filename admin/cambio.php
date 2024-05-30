@@ -20,8 +20,7 @@ if (isset($idAdmin)) {
       $contrasenia_nueva = password_hash($contrasenia, PASSWORD_BCRYPT);
       $admin->cambiarContrasenia($idAdmin, $contrasenia_nueva);
       $mensajeCambio = "La contraseña se ha actualizado correctamente.";
-    } catch (Exception $e) {
-      error_log("Error en la base de datos: " . $e->getMessage());
+    } catch (PDOException $e) {
       $mensajeCambio = "Error en el cambio de contraseña, por favor, revisa los logs.";
     }
   }

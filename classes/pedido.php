@@ -2,6 +2,9 @@
 session_start();
 include_once '../include/zeus_tfg.php';
 
+/**
+ * Modelo de pedidos
+ */
 class Pedido
 {
     private $id_pedido;
@@ -62,12 +65,14 @@ class Pedido
         return $this->estado_pedido;
     }
 
-    // Método para insertar el pedido en la base de datos
+    /**
+     * Inserta un pedido en la base de datos con los datos de este objeto
+     */
     public function insert()
     {
         try {
             // Conectar a la base de datos
-            $conexion = camisetasDB::connectDB();
+            $conexion = CamisetasDB::connectDB();
 
             // Insertar el pedido con el id_producto_color_talla obtenido
             $sql_insert = "INSERT INTO pedidos 
@@ -84,16 +89,21 @@ class Pedido
                 $this->id_talla
             ]);
         } catch (PDOException $e) {
-            // Relanzamos el error para manejarlo luego
+            // Relanzamos el error para manejarlo posteriormente
+            error_log("Error en la base de datos: " . $e->getMessage());
             throw $e;
         }
     }
 
-    // Función para obtener los pedidos de un cliente con detalles completos
+    /**
+     * Función para obtener los pedidos de un cliente con detalles completos, por id del cliente
+     * Retorna un array con los pedidos
+     */
     public static function select($id_cliente)
     {
         try {
-            $conexion = camisetasDB::connectDB();
+            $conexion = CamisetasDB::connectDB();
+
             // Obtener información completa de los pedidos del cliente
             $sql = "SELECT 
                 p.id_pedido AS id_pedido,
@@ -118,31 +128,38 @@ class Pedido
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
             // Devuelve falso en caso de error
+            error_log("Error en la base de datos: " . $e->getMessage());
             return false;
         }
     }
 
-    // Función para eliminar un pedido
+    /**
+     * Elimina un pedido de la base de datos
+     */
     public static function delete($id_pedido, $id_cliente)
     {
         try {
-            $conexion = camisetasDB::connectDB();
+            $conexion = CamisetasDB::connectDB();
             $sql = "DELETE FROM pedidos WHERE id_pedido = ? AND id_cliente = ?";
             $stmt = $conexion->prepare($sql);
             $stmt->execute([$id_pedido, $id_cliente]);
-        } catch (Exception $e) {
-            // Manejar el error
-            echo "Error al eliminar el pedido: " . $e->getMessage();
+        } catch (PDOException $e) {
+            // Relanzamos el error para manejarlo posteriormente
+            error_log("Error en la base de datos: " . $e->getMessage());
+            throw $e;
         }
     }
 
-// Método para obtener todos los pedidos de la base de datos
-public static function selectAllPedidos() {
-    try {
-        $conexion = camisetasDB::connectDB();
-        $sql = "SELECT 
+    /**
+     * Función para obtener todos los pedidos
+     * Retorna un array con los pedidos
+     */
+    public static function selectAllPedidos()
+    {
+        try {
+            $conexion = CamisetasDB::connectDB();
+            $sql = "SELECT 
             p.id_pedido AS id_pedido,
             p.fecha AS fecha,
             c.nombre as nombre_cliente,
@@ -160,29 +177,31 @@ public static function selectAllPedidos() {
         JOIN tallas ta ON pct.id_talla = ta.id_talla
         ORDER BY p.fecha;
     ";
-        $stmt = $conexion->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
-    } catch (Exception $e) {
-        // Manejar el error
-        echo "Error al seleccionar todos los pedidos: " . $e->getMessage();
-        return false;
+            $stmt = $conexion->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            // Retornamos falso en caso de error
+            error_log("Error en la base de datos: " . $e->getMessage());
+            return false;
+        }
     }
-}
 
-// Método para actualizar el estado de un pedido por su ID
-public static function updateEstadoPedido($id_pedido, $estado_pedido) {
-    try {
-        $conexion = camisetasDB::connectDB();
-        $sql = "UPDATE pedidos SET estado_pedido = ? WHERE id_pedido = ?";
-        $stmt = $conexion->prepare($sql);
-        $stmt->execute([$estado_pedido, $id_pedido]);
-    } catch (Exception $e) {
-        // Manejar el error
-        echo "Error al actualizar el estado del pedido: " . $e->getMessage();
+    /**
+     * Función para actualizar el estado de un pedido, por id de pedido y estado
+     */
+    public static function updateEstadoPedido($id_pedido, $estado_pedido)
+    {
+        try {
+            $conexion = CamisetasDB::connectDB();
+            $sql = "UPDATE pedidos SET estado_pedido = ? WHERE id_pedido = ?";
+            $stmt = $conexion->prepare($sql);
+            $stmt->execute([$estado_pedido, $id_pedido]);
+        } catch (Exception $e) {
+            // Relanzamos el error para manejarlo posteriormente
+            error_log("Error en la base de datos: " . $e->getMessage());
+            throw $e;
+        }
     }
-}
-
-
 }

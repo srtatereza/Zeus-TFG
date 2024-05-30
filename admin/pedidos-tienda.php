@@ -12,7 +12,11 @@ $id_cliente = $_SESSION['id_cliente'];
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar_pedido'])) {
     // Eliminar el pedido por id de pedido y id de cliente, utilizando la función delete de la clase Pedido
     $idPedidoEliminar = trim($_POST['id_pedido']);
-    Pedido::delete($idPedidoEliminar, $id_cliente);
+    try {
+        Pedido::delete($idPedidoEliminar, $id_cliente);
+    } catch (PDOException $e) {
+        echo 'Error al eliminar el pedido, intente de nuevo o revise los logs. ' . $e->getMessage();
+    }
 }
 
 // Verificar si se ha enviado el formulario de actualización del estado del pedido
@@ -20,7 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['actualizar_estado_pedi
     $id_pedido = $_POST['id_pedido'];
     $estado_pedido = $_POST['estado_pedido'];
     // Llamar al método para actualizar el estado del pedido
-    Pedido::updateEstadoPedido($id_pedido, $estado_pedido);
+    
+    try {
+        Pedido::updateEstadoPedido($id_pedido, $estado_pedido);
+    } catch (PDOException $e) {
+        echo 'Error al actualizar el estado del pedido, intente de nuevo o revise los logs. ' . $e->getMessage();
+    }
+
     // Redirigir o mostrar mensaje de éxito
     header("Location: pedidos-tienda.php");
     exit();
