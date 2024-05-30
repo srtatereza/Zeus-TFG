@@ -7,6 +7,11 @@ include_once 'classes/producto.php';
 include_once 'classes/pedido.php';
 include_once 'classes/color.php';
 include_once 'classes/talla.php';
+
+// Verificar si se ha iniciado sesión, sino redirigir a la página de inicio de sesión
+if (!isset($_SESSION['id_cliente'])) {
+    header("Location: /login.php");
+}
 ?>
 
 <!DOCTYPE html>

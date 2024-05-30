@@ -6,22 +6,26 @@ include_once '../classes/administrador.php';
 
 $idAdmin = $_SESSION['id_administrador'];
 
+if (!isset($idAdmin)) {
+  header("Location: /admin/login.php");
+}
+
 if (isset($idAdmin)) {
   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cambiar_contrasenia_admin"])) {
     $contrasenia = trim($_POST["contrasenia"]);
     $confirmar_contrasenia = trim($_POST["confirmar_contrasenia"]);
 
-    if ($contrasenia !== $confirmar_contrasenia) {
+    if ($contrasenia != $confirmar_contrasenia) {
       $mensajeCambio = "Las contraseñas no coinciden. Por favor, inténtalo de nuevo.";
-    }
-
-    $admin = new Administrador(null, null, null);
-    try {
-      $contrasenia_nueva = password_hash($contrasenia, PASSWORD_BCRYPT);
-      $admin->cambiarContrasenia($idAdmin, $contrasenia_nueva);
-      $mensajeCambio = "La contraseña se ha actualizado correctamente.";
-    } catch (PDOException $e) {
-      $mensajeCambio = "Error en el cambio de contraseña, por favor, revisa los logs.";
+    } else {
+      $admin = new Administrador(null, null, null);
+      try {
+        $contrasenia_nueva = password_hash($contrasenia, PASSWORD_BCRYPT);
+        $admin->cambiarContrasenia($idAdmin, $contrasenia_nueva);
+        $mensajeCambio = "La contraseña se ha actualizado correctamente.";
+      } catch (PDOException $e) {
+        $mensajeCambio = "Error en el cambio de contraseña, por favor, revisa los logs.";
+      }
     }
   }
 }

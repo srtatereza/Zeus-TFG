@@ -25,6 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_admin"])) {
     if ($adminEncontrado && password_verify($contrasenia, $adminEncontrado['contrasenia'])) {
       $_SESSION['id_administrador'] = $adminEncontrado['id_administrador'];
       $_SESSION['administrador'] = $adminEncontrado['usuario'];
+
+      // Destruimos la sesión de administrador si la hay para evitar conflictos
+      $_SESSION['id_cliente'] = null;
+      $_SESSION['email'] = null;
+
       header("Location: pedidos-tienda.php");
     } else {
       $mensajeError = "Usuario o contraseña incorrectos.";

@@ -8,6 +8,11 @@ include_once 'classes/pedido.php';
 
 $id_cliente = $_SESSION['id_cliente'];
 
+// Verificar si se ha iniciado sesión, sino redirigir a la página de inicio de sesión
+if (!isset($id_cliente)) {
+    header("Location: /login.php");
+}
+
 // Verificar si se ha enviado el formulario de eliminación
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar_pedido'])) {
     // Eliminar el pedido por id de pedido y id de cliente, utilizando la función delete de la clase Pedido

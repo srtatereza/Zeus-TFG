@@ -4,6 +4,11 @@ include_once 'include/zeus_tfg.php';
 include_once 'components/configuracion.php';
 include_once 'classes/producto.php';
 include_once 'classes/cliente.php';
+
+// Verificar si se ha iniciado sesión, sino redirigir a la página de inicio de sesión
+if (!isset($_SESSION['id_cliente'])) {
+    header("Location: /login.php");
+}
 ?>
 
 <!DOCTYPE html>

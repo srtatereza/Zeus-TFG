@@ -6,18 +6,9 @@ include_once '../classes/producto.php';
 include_once '../classes/cliente.php';
 include_once '../classes/pedido.php';
 
-$id_cliente = $_SESSION['id_cliente'];
-
-// Verificar si se ha enviado el formulario de eliminación
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['eliminar_pedido'])) {
-    // Eliminar el pedido por id de pedido y id de cliente, utilizando la función delete de la clase Pedido
-    $idPedidoEliminar = trim($_POST['id_pedido']);
-    try {
-        Pedido::delete($idPedidoEliminar, $id_cliente);
-    } catch (PDOException $e) {
-        echo 'Error al eliminar el pedido, intente de nuevo o revise los logs. ' . $e->getMessage();
-    }
-}
+if (!isset($_SESSION['id_administrador'])) {
+    header("Location: /admin/login.php");
+  }
 
 // Verificar si se ha enviado el formulario de actualización del estado del pedido
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['actualizar_estado_pedido'])) {

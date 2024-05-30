@@ -4,6 +4,11 @@ include_once 'include/zeus_tfg.php';
 include_once 'components/configuracion.php';
 include_once 'classes/cliente.php';
 
+// Verificar si se ha iniciado sesión, sino redirigir a la página de inicio de sesión
+if (isset($_SESSION['id_cliente'])) {
+    header("Location: /home.php");
+}
+
 // Verifica si se envió el formulario de inicio de sesión
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logarse"])) {
     $email = trim($_POST["email"]);
@@ -17,6 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logarse"])) {
     if ($clienteEncontrado && password_verify($contrasenia, $clienteEncontrado['contrasenia'])) {
         $_SESSION['email'] = $email;
         $_SESSION['id_cliente'] = $clienteEncontrado['id_cliente'];
+
+        // Destruimos la sesión de administrador si la hay para evitar conflictos
+        $_SESSION['id_administrador'] = null;
+
         header("Location: home.php");
         exit();
     } else {
