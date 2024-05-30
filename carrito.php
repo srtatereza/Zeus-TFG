@@ -44,7 +44,7 @@ include_once 'classes/talla.php';
                     $id_talla = trim($_POST['talla']);
                     $id_color = trim($_POST['color']);
 
-                    // Se buscar en la base de datos el id_color y el id_talla correspondientes al nombre_color y numero_talla
+                    // Se busca en la base de datos el id_color y el id_talla correspondientes al nombre_color y numero_talla
                     // y se almacena junto con otros detalles del producto en el carrito
 
                     $tallas = Talla::select();
@@ -75,26 +75,26 @@ include_once 'classes/talla.php';
                 // obtener la fecha de la compra
                 $fechaCompra = date('Y-m-d H:i:s');
 
-                foreach ($_SESSION['carrito'] as $producto) {
-                    $id_producto = $producto['id_producto'];
-                    $id_cliente = $_SESSION['id_cliente'];
-                    $cantidad_producto = $producto['cantidad'];
-                    $id_color = $producto['id_color'];
-                    $id_talla = $producto['id_talla'];
-
-                    // Insertar el pedido en la tabla pedidos usando los IDs del color y la talla obtenidos del carrito
-                }
                 try {
-                    $pedido = new Pedido($fechaCompra, $id_cliente, $id_producto, $cantidad_producto, $id_color, $id_talla, 'en preparación');
-                    $pedido->insert();
+                    foreach ($_SESSION['carrito'] as $producto) {
+                        $id_producto = $producto['id_producto'];
+                        $id_cliente = $_SESSION['id_cliente'];
+                        $cantidad_producto = $producto['cantidad'];
+                        $id_color = $producto['id_color'];
+                        $id_talla = $producto['id_talla'];
+
+                        // Insertar el pedido en la tabla pedidos usando los IDs del color y la talla obtenidos del carrito
+                        $pedido = new Pedido($fechaCompra, $id_cliente, $id_producto, $cantidad_producto, $id_color, $id_talla, 'en preparación');
+                        $pedido->insert();
+                    }
+                    // Vaciar el carrito después de la compra
+                    $_SESSION['carrito'] = [];
+                    echo '<p class="card-text">Compra realizada con éxito.</p>';
+                    echo '<a class="mensaje-producto" href="pedidos.php">Ver la factura de mi pedido</a>';
+                    echo '<br>';
                 } catch (PDOException $e) {
                     echo "<p>Error al realizar la compra, contacte con el administrador.</p>";
                 }
-                // Vaciar el carrito después de la compra
-                $_SESSION['carrito'] = [];
-                echo '<p class="card-text">Compra realizada con éxito.</p>';
-                echo '<a class="mensaje-producto" href="pedidos.php">Ver la factura de mi pedido</a>';
-                echo '<br>';
                 // Procesar la eliminación de un producto del carrito
             } elseif (isset($_POST['eliminar_producto'])) {
                 $id_productoEliminar = $_POST['eliminar_producto'];
@@ -106,9 +106,7 @@ include_once 'classes/talla.php';
                 unset($_SESSION['carrito']);
                 echo '<p class="card-text"> Error:El carrito ha sido vaciado.</p>';
             }
-
             ?>
-
 
             <!-- Muestra productos en el carrito y calcula el total de la compra -->
             <div class="productos-carrito">

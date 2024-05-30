@@ -33,6 +33,7 @@ $usuario_iniciado = isset($_SESSION['email']);
       <!-- Contenedor de productos -->
       <div class="productos row">
         <?php
+        // Obtener todos los productos
         $productos = Producto::select();
         if (!empty($productos)) {
           foreach ($productos as $producto) {
@@ -92,7 +93,6 @@ $usuario_iniciado = isset($_SESSION['email']);
   </div>
 
   <!-- Contenedor de enlace al login.php -->
-
   <div class="publicidad-dos">
     <a class="visitanos" href="login.php">Visita nuestra Web</a>
   </div>

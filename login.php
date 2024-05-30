@@ -48,7 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logarse"])) {
 <body>
     <div class="contenedor-central-login">
         <!-- Enlace para registrarse -->
-
         <p>¿No estás registrado?<br><a href='registro.php'>Ir a Registrarse</a></p>
 
         <?php
