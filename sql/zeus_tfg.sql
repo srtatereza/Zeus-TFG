@@ -190,7 +190,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Camiseta Goku',25.00,'img/goku.png'),(2,'Naruto',25.00,'img/naruto.png'),(3,'Vegeta',25.00,'img/vegeta.png'),(4,'Gatos',25.00,'img/gatos.png'),(5,'Super Mario',25.00,'img/supermario.png'),(6,'Zelda',25.00,'img/zelda.png'),(7,'Pokémon',25.00,'img/pokemon.png'),(8,'Los Simpson',25.00,'img/lossimpson.png'),(9,'Spider-Man',25.00,'img/spiderman.png');
+INSERT INTO `productos` VALUES (1,'Goku',25.00,'img/goku.png'),(2,'Naruto',25.00,'img/naruto.png'),(3,'Vegeta',25.00,'img/vegeta.png'),(4,'Gatos',25.00,'img/gatos.png'),(5,'Super Mario',25.00,'img/supermario.png'),(6,'Zelda',25.00,'img/zelda.png'),(7,'Pikachu',25.00,'img/pokemon.png'),(8,'Los Simpson',25.00,'img/lossimpson.png'),(9,'Spider-Man',25.00,'img/spiderman.png');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
