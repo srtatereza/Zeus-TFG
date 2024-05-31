@@ -58,7 +58,7 @@ if (!isset($_SESSION['id_cliente'])) {
                     $numero_talla = $tallas[$id_talla]->getNumeroTalla();
                     $nombre_color = $colores[$id_color]->getNombreColor();
 
-                    // Luego, cuando tenga los IDs, puedes almacenarlos en el carrito así:
+                    // Luego, los IDs se almacenan en el carrito
                     $_SESSION['carrito'][$id_producto] = array(
                         'id_producto' => $id_producto,
                         'nombre' => $nombre,
@@ -75,12 +75,13 @@ if (!isset($_SESSION['id_cliente'])) {
                 } else {
                     echo '<p class="mensaje">Error al agregar el producto al carrito.</p>';
                 }
-                // Al realizar la compra
+                // Para realizar la compra
             } else if (isset($_POST['comprar'])) {
                 // obtener la fecha de la compra
                 $fechaCompra = date('Y-m-d H:i:s');
 
                 try {
+                    // Recorrer el carrito 
                     foreach ($_SESSION['carrito'] as $producto) {
                         $id_producto = $producto['id_producto'];
                         $id_cliente = $_SESSION['id_cliente'];
@@ -112,13 +113,11 @@ if (!isset($_SESSION['id_cliente'])) {
                 echo '<p class="card-text"> Error:El carrito ha sido vaciado.</p>';
             }
             ?>
-
-            <!-- Muestra productos en el carrito y calcula el total de la compra -->
+            <!-- Contenedor para mostrar los productos del carrito -->
             <div class="productos-carrito">
                 <h2>Carrito de Compras</h2>
                 <?php
-
-                // Mostrar el contenido del carrito
+                // Verificar si el carrito no está vacío
                 if (!empty($_SESSION['carrito'])) {
                     $total = 0;
                     echo '<div class="row">'; // Inicio del contenedor row 
