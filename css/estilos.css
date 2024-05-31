@@ -47,6 +47,7 @@ p {
 
 img {
     width: auto;
+    height: auto;
 }
 
 .contenedor-central-fondo {
@@ -57,12 +58,9 @@ img {
     max-width: 120rem;
     margin: 0 auto;
     height: auto;
-    /* Corregir valor de height */
     padding-top: 1rem;
     overflow: hidden;
-    /* Añadir overflow hidden si necesario */
     padding-bottom: 2rem;
-    /* Añadir padding bottom si el contenido del footer necesita espacio */
     min-height: 70vh;
 }
 
@@ -82,6 +80,7 @@ h2 {
     font-size: 2.5rem;
 }
 
+/* carrusel */
 .carousel-item img {
     width: 100%;
     height: 100%;
@@ -89,7 +88,7 @@ h2 {
     object-position: center;
 }
 
-
+/* Mensaje de Publicidad */
 .publicidad p {
     text-align: center;
     padding: 10px;
@@ -104,31 +103,21 @@ h2 {
 .publicidad-dos {
     display: flex;
     justify-content: center;
-    /* Centra horizontalmente */
     align-items: center;
-    /* Centra verticalmente */
     margin-top: 20px;
-    /* Espacio superior */
 }
 
 .publicidad-dos a.visitanos {
     text-decoration: none;
-    /* Quita el subrayado */
-    color: inherit;
-    /* Usa el color de texto heredado */
+    color: inherit; /* Usa el color de texto heredado */
     margin-left: 10px;
-    /* Agrega un margen izquierdo */
     text-align: center;
     font-size: 2.5rem;
     color: var(--negro);
     border-radius: 2rem;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
+/* Modal */
 .modal-body p {
     font-size: 1.5rem;
 }
@@ -170,12 +159,10 @@ img {
 /* Aumentar el tamaño del ícono de la hamburguesa en dispositivos móviles */
 .navbar-toggler-icon {
     font-size: 3rem;
-    /* Ajusta el tamaño del ícono según tus preferencias */
 }
 
 .navbar-nav .nav-link {
     font-size: 1.6rem;
-    /* Tamaño de letra más pequeño para dispositivos móviles */
     padding: 0%;
     background-color: #041e3a;
     margin: 0%;
@@ -184,17 +171,15 @@ img {
 }
 
 .navbar-nav .nav-link:hover {
-    color: var(--secundario);
-    /* Cambia el color del texto del enlace cuando está sobre él */
+    color: var(--secundario); /* Cambia el color del texto del enlace cuando está sobre él */
 }
 
 .navbar-nav .nav-item {
-    margin: 10px 0;
-    /* Ajusta el espaciado entre los elementos */
+    margin: 10px 0; /* Ajusta el espaciado entre los elementos */
     text-align: center;
-    /* Centra el texto horizontalmente */
 }
 
+/* Productos */
 .productos .card {
     height: 100%;
     display: flex;
@@ -204,21 +189,12 @@ img {
 
 .productos img {
     margin-top: 30px;
-    max-width: 100%;
-    /* Asegura que la imagen no se extienda más allá de su contenedor */
+    max-width: 100%; /* Asegura que la imagen no se extienda más allá de su contenedor */
 }
 
 .productos-carrito h2 {
     font-size: 2rem !important;
     margin-top: 10px !important;
-}
-
-button.comprar-btn {
-    background-color: var(--secundario);
-    padding: 5px;
-    color: var(--negro);
-    border-radius: 1rem;
-    font-size: 2rem;
 }
 
 .card-body {
@@ -236,27 +212,32 @@ button.comprar-btn {
     font-size: 2rem;
 }
 
+/* botones */
+button.comprar-btn {
+    background-color: var(--secundario);
+    padding: 5px;
+    color: var(--negro);
+    border-radius: 1rem;
+    font-size: 2rem;
+}
+
 .btn.btn-primary {
     background-color: var(--secundario);
     color: var(--negro);
     font-size: 1.5rem;
-    /* Otros estilos que ya tenías */
 }
 
 .btn.btn-secondary {
     font-size: 1.5rem;
-    /* Otros estilos que ya tenías */
 }
 
 /* footer */
 .footer-style {
     padding: 30px 0;
-    /* Ajusta el padding superior e inferior */
     background-color: var(--primario);
     text-align: center;
     color: var(--blanco);
-    /* Añadir para asegurarse de que el contenido esté dentro del contenedor */
-    overflow: hidden;
+    overflow: hidden; /* Asegura de que el contenido esté dentro del contenedor */
 }
 
 footer h2 {
@@ -283,7 +264,6 @@ footer p {
 
 .footer-col ul.list-unstyled li a {
     text-decoration: none;
-    /* Elimina la decoración subrayada */
     color: inherit;
     /* Utiliza el color de texto predeterminado */
     font-size: 1.5rem;
@@ -293,36 +273,27 @@ footer p {
 .footer-col.redes-sociales {
     display: flex;
     flex-direction: row;
-    /* Alinea los elementos en fila */
     justify-content: center;
-    /* Centra los elementos horizontalmente */
     align-items: center;
-    /* Centra los elementos verticalmente */
     text-align: center;
-    /* Centra el texto */
 }
 
 .footer-col.redes-sociales h3 {
     margin-right: 10px;
-    /* Espacio a la derecha del título */
 }
 
 .list-inline {
     display: flex;
     flex-direction: row;
-    /* Alinea los elementos en fila */
     align-items: center;
-    /* Centra los elementos verticalmente */
     justify-content: center;
-    /* Centra los elementos horizontalmente */
 }
 
 .footer-col.redes-sociales .list-inline .btn-social {
     margin: 0 10px;
-    /* Espaciado horizontal entre los iconos */
 }
 
-
+/* Pie de pagina */
 .creador h2 {
     font-size: 2rem;
     background-color: var(--secundario);
@@ -348,46 +319,42 @@ footer p {
 .contenedor-central-login a {
     text-decoration: none;
     margin-left: 20px;
-    /* Subrayado al pasar el ratón */
 }
 
 .contenedor-login {
     background-color: #343a40;
     color: var(--blanco);
-    /* Gris oscuro */
     padding: 30px;
     border-radius: 10px;
     max-width: 400px;
     margin: 0 auto;
-    /* Espacio superior */
     font-size: 2rem;
     height: 100%;
 }
+
+/* Registro */
 .contenedor-login-registro {
     background-color: #343a40;
     color: var(--blanco);
-    /* Gris oscuro */
     padding: 30px;
     border-radius: 10px;
     max-width: 400px;
     margin: 0 auto;
-    /* Espacio superior */
     font-size: 1.5rem;
     height: 100%;
 }
 
-.contenedor-login, .contenedor-login-registro h2 {
+.contenedor-login,
+.contenedor-login-registro h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
 /* Estilos para los label */
 label {
-    color: #ffffff;
-    /* Blanco */
+    color: var(--blanco);
     border-radius: 1rem;
     background-color: #007bff;
-    /* Azul oscuro */
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
     display: inline-block;
@@ -409,29 +376,19 @@ input[type="submit"] {
 
 input[type="submit"] {
     background-color: #007bff;
-    /* Azul claro */
-    color: #ffffff;
-    /* Blanco */
+    color: var(--blanco);
     cursor: pointer;
 }
 
 input[type="submit"]:hover {
     background-color: var(--secundario);
-    /* Azul oscuro al pasar el ratón */
     color: var(--negro);
 }
 
-/* home */
-
+/* Home y carrito*/
 .form-group {
     display: flex;
     margin: 5px;
-}
-
-.mensaje {
-    font-size: 1.5rem;
-    overflow: hidden;
-    margin-top: 10px;
 }
 
 .card-text-precio {
@@ -493,12 +450,20 @@ button.btn.btn-success {
     font-size: 2.5rem;
 }
 
+/* Mensajes */
+.mensaje {
+    font-size: 1.5rem;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
 .mensaje-producto {
     text-align: center;
     color: red;
     overflow: hidden
 }
 
+/* Tablas */
 .table th,
 .table td {
     border: 1px solid #9f9f9f;
@@ -509,14 +474,11 @@ button.btn.btn-success {
 
 .table-th {
     background-color: var(--primario) !important;
-    /* Color de fondo para los encabezados */
     color: var(--blanco) !important;
-    /* Color del texto para los encabezados */
 }
 
 .table-td {
     background-color: #ecfeff !important;
-    /* Color de fondo para las celdas */
 }
 
 button.btn.btn-primary.actualizar {
@@ -524,13 +486,7 @@ button.btn.btn-primary.actualizar {
     padding: 0%;
 }
 
-.publicidad-dos {
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* contacto */
-
+/* Contacto */
 .container-contacto {
     padding-top: 1rem;
     max-width: 120rem;
@@ -540,7 +496,6 @@ button.btn.btn-primary.actualizar {
 
 .contacto-p {
     font-size: 1.5rem;
-    /* Tamaño de fuente más grande para tabletas y ordenadores */
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
@@ -550,6 +505,7 @@ button.btn.btn-primary.actualizar {
     margin-top: 20px;
 }
 
+/* Formularios */
 input#usuario.form-control,
 input#contrasenia.form-control,
 input#password1.form-control,
@@ -562,7 +518,7 @@ input#usuario.form-control {
     padding: 0.1rem;
 }
 
-/* pedidos-tienda */
+/* Pedidos-tienda */
 .estado-pedido {
     margin-bottom: 0.5rem;
 }
@@ -576,28 +532,26 @@ select.form-control.estado-pedido {
 @media (min-width: 768px) and (max-width: 991px) {
 
     .contenedor-login-registro {
-        /* Espacio superior */
         font-size: 2rem;
         height: 100%;
     }
+
     .contenedor-login {
-        height: 100%;   
-    }
-    .contenedor-central {
-        overflow: hidden;
-        /* Añadir overflow hidden si necesario */
-        padding-bottom: 2rem;
-        /* Añadir padding bottom si el contenido del footer necesita espacio */
         height: 100%;
     }
 
-    .contenedor-central-login{
+    .contenedor-central {
+        overflow: hidden;
+        padding-bottom: 2rem;
+        height: 100%;
+    }
+
+    .contenedor-central-login {
         min-height: 70vh;
     }
 
     .footer-style {
         padding-bottom: 20px;
-        /* Ajustar padding inferior del footer */
     }
 
     .productos-carrito h2 {
@@ -619,23 +573,23 @@ select.form-control.estado-pedido {
     select.form-control.estado-pedido {
         font-size: 1.3rem !important;
     }
+
     .contacto-p {
         font-size: 1.8rem;
-        /* Tamaño de fuente más grande para tabletas y ordenadores */
     }
 }
 
-/* Estilos para pantallas de ordenador */
 @media (min-width: 992px) {
 
     .contenedor-login-registro {
-        /* Espacio superior */
         font-size: 2.2rem;
         height: 100%;
     }
+
     .contenedor-login {
-        height: 100%;   
+        height: 100%;
     }
+
     select.form-control.estado-pedido {
         font-size: 1.5rem !important;
     }
@@ -669,7 +623,6 @@ select.form-control.estado-pedido {
 
     .navbar-nav .nav-link {
         font-size: 2.5rem;
-        /* Tamaño de letra más pequeño para dispositivos móviles */
         padding: 10px;
         color: var(--negro);
         background-color: transparent;
@@ -692,7 +645,6 @@ select.form-control.estado-pedido {
         margin-right: 20px;
     }
 
-    /* LOGIN */
     .contenedor-central-login {
         font-size: 3rem;
     }
@@ -721,7 +673,6 @@ select.form-control.estado-pedido {
 
     .contacto-p {
         font-size: 2rem;
-        /* Tamaño de fuente más grande para tabletas y ordenadores */
     }
 
 }
