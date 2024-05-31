@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["registrarse"])) {
         // Inserta un cliente utilizando la función insert de la clase cliente
         $almacenarPassword = password_hash($contraseniaRegistro, PASSWORD_BCRYPT);
         $cliente = new Cliente("", $nombre, $apellido, $direccion, $telefono, $email, $almacenarPassword);
-        
+
         try {
             $cliente->insert();
         } catch (PDOException $e) {
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["registrarse"])) {
     <!-- Enlace al archivo CSS externo -->
     <?php include 'components/enlace.php'; ?>
 </head>
-
+<!-- Menu personalizado -->
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EBEDEF;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -103,8 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["registrarse"])) {
 
         </div>
     </div>
-        <!-- Footer -->
-        <?php include 'components/footer.php'; ?>
+    <!-- Footer -->
+    <?php include 'components/footer.php'; ?>
 
 </body>
 

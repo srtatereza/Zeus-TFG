@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logarse"])) {
     <!-- Enlace al archivo CSS externo -->
     <?php include 'components/enlace.php'; ?>
 </head>
-<!-- menu -->
+<!-- Menu personalizado -->
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EBEDEF;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
