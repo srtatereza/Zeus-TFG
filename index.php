@@ -23,8 +23,9 @@ $usuario_iniciado = isset($_SESSION['email']);
 <body>
   <!-- Enlace al menu -->
   <?php include 'components/menu.php'; ?>
-
+  <!-- Carrusel -->
   <?php include 'components/carrusel.php'; ?>
+  <!-- Publicidad -->
   <div class="publicidad">
     <p>Alta calidad y estilo único. ¡Encuentra la tuya y destaca!</p>
   </div>
